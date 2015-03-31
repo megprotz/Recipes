@@ -16,7 +16,163 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //Below is code primarily from Bart Jacobs tutorial. Also adding basic/simple/trial info to Core Data
+    //Initialize Window
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //Configure Window
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window makeKeyAndVisible];
+    
+    //Create Food Objects
+    NSEntityDescription *foodEntity = [NSEntityDescription entityForName:@"FoodItem" inManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *ccCookie = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [ccCookie setValue:@"Chocolate Chip Cookies" forKey:@"title"];
+    [ccCookie setValue:@30 forKey:@"cookTime"];
+    [ccCookie setValue:@"Combine dry ingredients. Set aside. Combine butter, egg, sugar, vanilla. Add in flour mixture and chocolate chips. Bake at 325 for 7.5 min." forKey:@"instructions"];
+    NSManagedObject *cCake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cCake setValue:@"Chocolate Cake" forKey:@"title"];
+    [cCake setValue:@60 forKey:@"cookTime"];
+    [cCake setValue:@"Stir together sugar, flour, cocoa, baking powder, baking soda, and salt. Add eggs, milk, oil and vanilla. Stir in boiling water. Bake 30 to 35 min at 350." forKey:@"instructions"];
+    NSManagedObject *vanillaCupcake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vanillaCupcake setValue:@"Vanilla Cupcake" forKey:@"title"];
+    [vanillaCupcake setValue:@35 forKey:@"cookTime"];
+    [vanillaCupcake setValue:@"Mix butter and sugar until light and fluffy. Stir in eggs one at a time. Stir in vanill and flour until just mixed. Bake at 350 18 to 20 min." forKey:@"instructions"];
+    
+    //Create Ingredient Objects
+    NSEntityDescription *ingredientEntity = [NSEntityDescription entityForName:@"Ingredient" inManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *flour = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [flour setValue:@"flour" forKey:@"name"];
+    NSManagedObject *sugar = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [sugar setValue:@"sugar" forKey:@"name"];
+    NSManagedObject *cocoa = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cocoa setValue:@"unsweetened cocoa powder" forKey:@"name"];
+    NSManagedObject *bakingPowder = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [bakingPowder setValue:@"baking powder" forKey:@"name"];
+    NSManagedObject *bakingSoda = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [bakingSoda setValue:@"baking soda" forKey:@"name"];
+    NSManagedObject *salt = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [salt setValue:@"salt" forKey:@"name"];
+    NSManagedObject *eggs = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [eggs setValue:@"eggs" forKey:@"name"];
+    NSManagedObject *milk = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [milk setValue:@"milk" forKey:@"name"];
+    NSManagedObject *vegetableOil = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vegetableOil setValue:@"vegetable oil" forKey:@"name"];
+    NSManagedObject *vanilla = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vanilla setValue:@"vanilla" forKey:@"name"];
+    NSManagedObject *water = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [water setValue:@"water" forKey:@"name"];
+    NSManagedObject *cChips = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cChips setValue:@"chocolate chips" forKey:@"name"];
+    NSManagedObject *butter = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [butter setValue:@"butter" forKey:@"name"];
+    NSManagedObject *brownSugar = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [brownSugar setValue:@"brown sugar" forKey:@"name"];
+    NSManagedObject *selfRisingFlour = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [selfRisingFlour setValue:@"self rising flour" forKey:@"name"];
+    NSManagedObject *cinnamon = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cinnamon setValue:@"cinnamon" forKey:@"name"];
+    NSManagedObject *carraway = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [carraway setValue:@"carraway seeds" forKey:@"name"];
+    NSManagedObject *buttermilk = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [buttermilk setValue:@"buttermilk" forKey:@"name"];
+    
+    //Create Relationships
+    ///////////////////////////////////////////////////
+    
+    //Save everything
+    NSError *error = nil;
+    if (![ccCookie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cCake.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vanillaCupcake.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![flour.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![sugar.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cocoa.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![bakingPowder.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![bakingSoda.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![salt.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![eggs.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![milk.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vegetableOil.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vanilla.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![water.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cChips.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![butter.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![brownSugar.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![selfRisingFlour.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cinnamon.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![carraway.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![buttermilk.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+
+
+
+    //Set up Relationships
+
+    
     return YES;
 }
 

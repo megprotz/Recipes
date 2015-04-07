@@ -79,7 +79,34 @@
     [buttermilk setValue:@"buttermilk" forKey:@"name"];
     
     //Create Relationships
-    ///////////////////////////////////////////////////
+    [ccCookie setValue:[NSSet setWithObject:butter] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:brownSugar] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:flour] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:bakingSoda] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:salt] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObject:cChips] forKey:@"needs"];
+    
+    [cCake setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:flour] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:cocoa] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:bakingPowder] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:bakingSoda] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:salt] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:milk] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:vegetableOil] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
+    [cCake setValue:[NSSet setWithObject:water] forKey:@"needs"];
+
+    [vanillaCupcake setValue:[NSSet setWithObject:butter] forKey:@"needs"];
+    [vanillaCupcake setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
+    [vanillaCupcake setValue:[NSSet setWithObject:selfRisingFlour] forKey:@"needs"];
+    [vanillaCupcake setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
+    [vanillaCupcake setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
+
     
     //Save everything
     NSError *error = nil;
@@ -168,10 +195,26 @@
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
 
-
-
-    //Set up Relationships
-
+    ///////////////////////////////////////////////////////////////////////////////////
+    //Practice Fetching (to make sure it works) ***should remove this later***
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
+    ////////SORT DESCRIPTOR. THERE CAN BE AN OPTION ON APP TO SORT BY.../////////
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY FoodItem.needs LIKE[cd] %@)", @"vanilla"];
+    [fetchRequest setPredicate:predicate];
+    //NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    //[fetchRequest setSortDescriptors:@[sortDescriptor]];
+    NSError *fetchError = nil;
+    NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+    if(!fetchError){
+        for (NSManagedObject *managedObject in result) {
+            NSLog(@"%@", [managedObject valueForKey:@"title"]);
+        }
+    }
+    else{
+        NSLog(@"Error fetching data.");
+        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+    }
+    ///////////////////////////////////////////////////////////////////////////////////
     
     return YES;
 }

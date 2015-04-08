@@ -15,8 +15,9 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (void)loadSampleData {
     //Below is code primarily from Bart Jacobs tutorial. Also adding basic/simple/trial info to Core Data
+    //Probably should find a way to do this w/out so many lines of code.
     //Initialize Window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -79,34 +80,12 @@
     [buttermilk setValue:@"buttermilk" forKey:@"name"];
     
     //Create Relationships
-    [ccCookie setValue:[NSSet setWithObject:butter] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:brownSugar] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:flour] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:bakingSoda] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:salt] forKey:@"needs"];
-    [ccCookie setValue:[NSSet setWithObject:cChips] forKey:@"needs"];
+    [ccCookie setValue:[NSSet setWithObjects:cChips, salt, bakingSoda, flour, vanilla, eggs, brownSugar, sugar, butter, nil] forKey:@"needs"];
     
-    [cCake setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:flour] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:cocoa] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:bakingPowder] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:bakingSoda] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:salt] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:milk] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:vegetableOil] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
-    [cCake setValue:[NSSet setWithObject:water] forKey:@"needs"];
-
-    [vanillaCupcake setValue:[NSSet setWithObject:butter] forKey:@"needs"];
-    [vanillaCupcake setValue:[NSSet setWithObject:sugar] forKey:@"needs"];
-    [vanillaCupcake setValue:[NSSet setWithObject:selfRisingFlour] forKey:@"needs"];
-    [vanillaCupcake setValue:[NSSet setWithObject:eggs] forKey:@"needs"];
-    [vanillaCupcake setValue:[NSSet setWithObject:vanilla] forKey:@"needs"];
-
+    [cCake setValue:[NSSet setWithObjects:water, vanilla, vegetableOil, milk, eggs, salt, bakingSoda, bakingPowder, cocoa, flour, sugar, nil] forKey:@"needs"];
+    
+    [vanillaCupcake setValue:[NSSet setWithObjects:vanilla, eggs, selfRisingFlour, sugar, butter, nil] forKey:@"needs"];
+    
     
     //Save everything
     NSError *error = nil;
@@ -194,15 +173,26 @@
         NSLog(@"Unable to save managed object context.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
+}
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {}
+    else{
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        //This is the first launch ever.
+        
+        [self loadSampleData];
+    }
     ///////////////////////////////////////////////////////////////////////////////////
     //Practice Fetching (to make sure it works) ***should remove this later***
+    ///note: need to figure out how to make sure each managed object model only loads once
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
     ////////SORT DESCRIPTOR. THERE CAN BE AN OPTION ON APP TO SORT BY.../////////
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY FoodItem.needs LIKE[cd] %@)", @"vanilla"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY needs.name == %@) AND (ANY needs.name == %@)", @"chocolate chips", @"flour"];
     [fetchRequest setPredicate:predicate];
-    //NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-    //[fetchRequest setSortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
     NSError *fetchError = nil;
     NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
     if(!fetchError){

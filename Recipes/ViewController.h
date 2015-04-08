@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+-(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 
 @end
 

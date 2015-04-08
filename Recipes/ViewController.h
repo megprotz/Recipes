@@ -10,7 +10,9 @@
 
 @interface ViewController : UIViewController
 
--(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+@property (weak, nonatomic) IBOutlet UITableView *ingredientTable;
+
+@property (weak, nonatomic) IBOutlet UITableView *categoryTable;
 
 @end
 

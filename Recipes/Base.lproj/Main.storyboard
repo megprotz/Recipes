@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,30 +17,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZY-Re-8uK">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <gestureRecognizers/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uZg-dc-1Yx" customClass="CategoryTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="407"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="djd-Dj-b6A"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O5i-GR-sRD">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O5i-GR-sRD" id="NpK-Zo-AtF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="YaV-VV-dm2" appends="YES" id="koY-by-Djh"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="PRE-bv-blx"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IPD-El-lfS"/>
                                 </connections>
-                            </button>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M8f-ve-EBZ" customClass="IngredientTableView">
+                                <rect key="frame" x="300" y="0.0" width="300" height="407"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="J5h-Wa-O3y"/>
+                                    <constraint firstAttribute="height" constant="407" id="reo-wx-bFt"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OSz-lc-bhX">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OSz-lc-bhX" id="gro-3v-rst">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="IU9-YT-S18"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uvy-yA-HKT"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="gZY-Re-8uK" secondAttribute="centerY" id="MxB-cu-B8a"/>
-                            <constraint firstAttribute="centerX" secondItem="gZY-Re-8uK" secondAttribute="centerX" id="RiZ-Fb-2Ay"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uZg-dc-1Yx" secondAttribute="bottom" constant="193" id="Ae2-8p-Fcs"/>
+                            <constraint firstItem="uZg-dc-1Yx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="bq7-PW-Bka"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M8f-ve-EBZ" secondAttribute="bottom" constant="193" id="gPg-5p-06w"/>
+                            <constraint firstItem="uZg-dc-1Yx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="kWV-dP-nec"/>
+                            <constraint firstItem="M8f-ve-EBZ" firstAttribute="leading" secondItem="uZg-dc-1Yx" secondAttribute="trailing" id="lA8-S3-uPv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M8f-ve-EBZ" secondAttribute="trailing" constant="-16" id="zLw-0e-WCl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoryTable" destination="uZg-dc-1Yx" id="HfW-l6-pAQ"/>
+                        <outlet property="ingredientTable" destination="M8f-ve-EBZ" id="ecm-JR-nRK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="YaV-VV-dm2">
-                    <connections>
-                        <action selector="handlePan:" destination="BYZ-38-t0r" id="RB0-HT-UVo"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
         </scene>
     </scenes>

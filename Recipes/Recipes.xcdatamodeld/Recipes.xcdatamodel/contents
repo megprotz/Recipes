@@ -8,11 +8,12 @@
         <relationship name="needs" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="isIn" inverseEntity="Ingredient" syncable="YES"/>
     </entity>
     <entity name="Ingredient" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" defaultValueString="other" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="isIn" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="FoodItem" inverseName="needs" inverseEntity="FoodItem" syncable="YES"/>
     </entity>
     <elements>
         <element name="FoodItem" positionX="-333" positionY="18" width="128" height="118"/>
-        <element name="Ingredient" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Ingredient" positionX="-54" positionY="18" width="128" height="90"/>
     </elements>
 </model>

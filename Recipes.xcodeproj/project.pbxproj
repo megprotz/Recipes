@@ -15,8 +15,8 @@
 		2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937C1ACB0CF7005D7144 /* Images.xcassets */; };
 		2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937E1ACB0CF7005D7144 /* LaunchScreen.xib */; };
 		2B0B938C1ACB0CF7005D7144 /* RecipesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */; };
-		2B2957F71AD57A2700A60662 /* IngredientTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2957F61AD57A2700A60662 /* IngredientTableView.m */; };
-		2B2957FA1AD57A4C00A60662 /* CategoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2957F91AD57A4C00A60662 /* CategoryTableView.m */; };
+		2BF4CF011AD6EF7B00384C41 /* IngredientTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF4CF001AD6EF7B00384C41 /* IngredientTableView.m */; };
+		2BF4CF041AD6EF8F00384C41 /* CategoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF4CF031AD6EF8F00384C41 /* CategoryTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +44,10 @@
 		2B0B93851ACB0CF7005D7144 /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0B938A1ACB0CF7005D7144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipesTests.m; sourceTree = "<group>"; };
-		2B2957F51AD57A2700A60662 /* IngredientTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientTableView.h; sourceTree = "<group>"; };
-		2B2957F61AD57A2700A60662 /* IngredientTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientTableView.m; sourceTree = "<group>"; };
-		2B2957F81AD57A4C00A60662 /* CategoryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableView.h; sourceTree = "<group>"; };
-		2B2957F91AD57A4C00A60662 /* CategoryTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableView.m; sourceTree = "<group>"; };
+		2BF4CEFF1AD6EF7B00384C41 /* IngredientTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientTableView.h; sourceTree = "<group>"; };
+		2BF4CF001AD6EF7B00384C41 /* IngredientTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientTableView.m; sourceTree = "<group>"; };
+		2BF4CF021AD6EF8F00384C41 /* CategoryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableView.h; sourceTree = "<group>"; };
+		2BF4CF031AD6EF8F00384C41 /* CategoryTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +89,10 @@
 		2B0B936B1ACB0CF7005D7144 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				2B2957F81AD57A4C00A60662 /* CategoryTableView.h */,
-				2B2957F91AD57A4C00A60662 /* CategoryTableView.m */,
-				2B2957F51AD57A2700A60662 /* IngredientTableView.h */,
-				2B2957F61AD57A2700A60662 /* IngredientTableView.m */,
+				2BF4CEFF1AD6EF7B00384C41 /* IngredientTableView.h */,
+				2BF4CF001AD6EF7B00384C41 /* IngredientTableView.m */,
+				2BF4CF021AD6EF8F00384C41 /* CategoryTableView.h */,
+				2BF4CF031AD6EF8F00384C41 /* CategoryTableView.m */,
 				2B0B93701ACB0CF7005D7144 /* AppDelegate.h */,
 				2B0B93711ACB0CF7005D7144 /* AppDelegate.m */,
 				2B0B93761ACB0CF7005D7144 /* ViewController.h */,
@@ -234,10 +234,10 @@
 			files = (
 				2B0B93721ACB0CF7005D7144 /* AppDelegate.m in Sources */,
 				2B0B936F1ACB0CF7005D7144 /* main.m in Sources */,
-				2B2957F71AD57A2700A60662 /* IngredientTableView.m in Sources */,
+				2BF4CF011AD6EF7B00384C41 /* IngredientTableView.m in Sources */,
 				2B0B93781ACB0CF7005D7144 /* ViewController.m in Sources */,
 				2B0B93751ACB0CF7005D7144 /* Recipes.xcdatamodeld in Sources */,
-				2B2957FA1AD57A4C00A60662 /* CategoryTableView.m in Sources */,
+				2BF4CF041AD6EF8F00384C41 /* CategoryTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

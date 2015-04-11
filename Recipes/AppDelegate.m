@@ -204,7 +204,6 @@
     }
     ///////////////////////////////////////////////////////////////////////////////////
     //Practice Fetching (to make sure it works) ***should remove this later***
-    ///note: need to figure out how to make sure each managed object model only loads once
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
     ////////SORT DESCRIPTOR. THERE CAN BE AN OPTION ON APP TO SORT BY.../////////
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY needs.name == %@) AND (ANY needs.name == %@)", @"chocolate chips", @"flour"];
@@ -225,6 +224,28 @@
     ///////////////////////////////////////////////////////////////////////////////////
     
     return YES;
+}
+
+-(NSInteger)calculateNumberOfRowsInIngredientTable:(NSString *)type{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY category == %@)",type];
+    [fetchRequest setPredicate:predicate];
+    NSError *fetchError = nil;
+    NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+    NSInteger count = 0;
+    if(!fetchError){
+        for (NSManagedObject *managedObject in result) {
+            NSLog(@"%@", [managedObject valueForKey:@"title"]);  ///////////remove this line later-- here for testing purposes
+            count++;
+        }
+        return count;
+    }
+    else{
+        NSLog(@"Error fetching data.");
+        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+        return 0;
+    }
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

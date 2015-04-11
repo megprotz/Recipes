@@ -18,7 +18,7 @@ NSArray *tableData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    tableData = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    tableData = [NSArray arrayWithObjects:@"Dairy", @"Dry", @"Spice", @"Wet", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +32,7 @@ NSArray *tableData;
         return [tableData count];
     }
     else{ //tableView==self.ingredientTable
+        
         return 1;
     }
 }
@@ -72,6 +73,8 @@ NSArray *tableData;
     }
 
 }
+
+
 
 
 @end

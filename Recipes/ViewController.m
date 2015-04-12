@@ -7,18 +7,83 @@
 //
 
 #import "ViewController.h"
+#import <CoreData/CoreData.h>
 
-@interface ViewController ()
+@interface ViewController () <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 @implementation ViewController
 
 NSArray *tableData;
+NSArray *result;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     tableData = [NSArray arrayWithObjects:@"Dairy", @"Dry", @"Spice", @"Wet", nil];
+    
+    //Initialize Fetch Request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    
+    //Add Sort Descriptors
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    //Initialize Fetched Results Controller
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    //Configure Fetched Results Controller
+    [self.fetchedResultsController setDelegate:self];
+    
+    //Perform Fetch
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if(error){
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    result = [self.fetchedResultsController fetchedObjects];
+ 
+    for (NSManagedObject *managedObject in result) {
+        NSLog(@"%@", [managedObject valueForKey:@"name"]);
+    }
+
+}
+
+/////The below methods are implementations of the Delegate Protocol methods. Not really sure if they are relevant to me, but they are from one of the tutorials. May need to implement later. //////
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+    [self.categoryTable beginUpdates];
+    [self.ingredientTable beginUpdates];
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.categoryTable endUpdates];
+    [self.ingredientTable endUpdates];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [self.categoryTable insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [self.categoryTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+           // [self configureCell:(TSPToDoCell *)[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+        }
+        case NSFetchedResultsChangeMove: {
+            [self.categoryTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.categoryTable insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

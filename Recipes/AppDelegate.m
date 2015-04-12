@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -202,6 +203,23 @@
         
         [self loadSampleData];
     }
+    
+    //Fetch Main Storyboard
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    //Instantiate Root Navigation Controller
+    UINavigationController *rootNavigationController = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"rootNavigationController"];
+    
+    //Configure View Controller
+    ViewController *viewController = (ViewController *)[rootNavigationController topViewController];
+    
+    if([viewController isKindOfClass:[ViewController class]]){
+        [viewController setManagedObjectContext:self.managedObjectContext];
+    }
+    
+    //Configure Window
+    [self.window setRootViewController:rootNavigationController];
+    
     ///////////////////////////////////////////////////////////////////////////////////
     //Practice Fetching (to make sure it works) ***should remove this later***
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];

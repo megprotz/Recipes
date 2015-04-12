@@ -14,5 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *categoryTable;
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end
 

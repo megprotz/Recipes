@@ -28,7 +28,7 @@ NSArray *result;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
     
     //Add Sort Descriptors
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
     //Initialize Fetched Results Controller
@@ -46,11 +46,6 @@ NSArray *result;
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
     result = [self.fetchedResultsController fetchedObjects];
- 
-    for (NSManagedObject *managedObject in result) {
-        NSLog(@"%@", [managedObject valueForKey:@"name"]);
-    }
-
 }
 
 /////The below methods are implementations of the Delegate Protocol methods. Not really sure if they are relevant to me, but they are from one of the tutorials. May need to implement later. //////
@@ -94,7 +89,7 @@ NSArray *result;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView==self.categoryTable) {
-        return [tableData count];
+        return [self calculateNumberCategories:result];
     }
     else{ //tableView==self.ingredientTable
         
@@ -114,7 +109,10 @@ NSArray *result;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         
-        cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+        for (NSString *category in [self calculateCategoryList:result]) {
+            cell.textLabel.text = category;
+        }
+        
         return cell;
     }
     else{ //tableView==self.ingredientTable
@@ -137,6 +135,39 @@ NSArray *result;
         [self.ingredientTable setHidden:NO];
     }
 
+}
+
+-(int)calculateNumberCategories:(NSArray *)result{
+    NSString *category = @"";
+    NSString *newCategory;
+    int count = 0;
+    for (NSManagedObject *managedObject in result) {
+        newCategory = [[managedObject valueForKey:@"category"] capitalizedString];
+        if ([category isEqualToString:newCategory]) {
+        }
+        else{
+            count++;
+            category = newCategory;
+        }
+    }
+    return count;
+}
+
+-(NSArray *)calculateCategoryList:(NSArray *)result{
+    NSString *category = @"";
+    NSString *newCategory;
+    NSMutableArray *categoryTableData = [[NSMutableArray alloc] init];
+    for (NSManagedObject *managedObject in result) {
+        newCategory = [[managedObject valueForKey:@"category"] capitalizedString];
+        if ([category isEqualToString:newCategory]) {
+        }
+        else{
+            [categoryTableData addObject:newCategory];
+            category = newCategory;
+        }
+    }
+    NSArray *categoryTableDataImmutable = [categoryTableData copy];
+    return categoryTableDataImmutable;
 }
 
 

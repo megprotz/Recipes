@@ -11,42 +11,45 @@
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *categoryFetchedResultsController;
+
+@property (strong, nonatomic) NSFetchedResultsController *ingredientFetchedResultsController;
 
 @end
 
 @implementation ViewController
 
-NSArray *tableData;
 NSArray *result;
+NSArray *ingredientResult;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    tableData = [NSArray arrayWithObjects:@"Dairy", @"Dry", @"Spice", @"Wet", nil];
     
-    //Initialize Fetch Request
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    //Initialize Fetch Requests
+    NSFetchRequest *categoryFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
     
     //Add Sort Descriptors
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *categorySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
+    [categoryFetchRequest setSortDescriptors:@[categorySortDescriptor]];
+
+    //Initialize Fetched Results Controllers
+    self.categoryFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:categoryFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
-    //Initialize Fetched Results Controller
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    //Configure Fetched Results Controllers
+    [self.categoryFetchedResultsController setDelegate:self];
     
-    //Configure Fetched Results Controller
-    [self.fetchedResultsController setDelegate:self];
-    
-    //Perform Fetch
+    //Perform Fetches
     NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
+    [self.categoryFetchedResultsController performFetch:&error];
     
     if(error){
         NSLog(@"Unable to perform fetch.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
-    result = [self.fetchedResultsController fetchedObjects];
+    result = [self.categoryFetchedResultsController fetchedObjects];
 }
+
+
 
 /////The below methods are implementations of the Delegate Protocol methods. Not really sure if they are relevant to me, but they are from one of the tutorials. May need to implement later. //////
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
@@ -89,11 +92,11 @@ NSArray *result;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView==self.categoryTable) {
-        return [self calculateNumberCategories:result];
+        return [self calculateNumberRows:result withAttribute:@"category"];
     }
     else{ //tableView==self.ingredientTable
         
-        return 1;
+        return [self calculateNumberRows:ingredientResult withAttribute:@"name"];
     }
 }
 
@@ -109,14 +112,14 @@ NSArray *result;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         
-        for (NSString *category in [self calculateCategoryList:result]) {
-            cell.textLabel.text = category;
-        }
+        cell.textLabel.text = [[self calculateList:result forTable:@"category"] objectAtIndex:indexPath.row];
         
         return cell;
     }
     else{ //tableView==self.ingredientTable
-       static NSString *simpleTableIdentifier = @"SimpleTableItem";
+       
+        
+        static NSString *simpleTableIdentifier = @"SimpleTableItem";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
         
@@ -124,7 +127,8 @@ NSArray *result;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         
-        cell.textLabel.text = @"hello";
+        cell.textLabel.text = [[self calculateList:ingredientResult forTable:@"name"] objectAtIndex:indexPath.row];
+        
         return cell;
 
     }
@@ -132,17 +136,35 @@ NSArray *result;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView==self.categoryTable) {
+        [self fetchToCreateIngredientTable:indexPath];
+        [self.ingredientTable reloadData];
         [self.ingredientTable setHidden:NO];
     }
 
 }
 
--(int)calculateNumberCategories:(NSArray *)result{
+-(NSArray *)calculateList:(NSArray *)result forTable:(NSString *)attribute{
+    NSString *category = @"";
+    NSString *newCategory;
+    NSMutableArray *tableData = [[NSMutableArray alloc] init];
+    for (NSManagedObject *managedObject in result) {
+        newCategory = [[managedObject valueForKey:attribute] capitalizedString];
+        if ([category isEqualToString:newCategory]) {
+        }
+        else{
+            [tableData addObject:newCategory];
+            category = newCategory;
+        }
+    }
+    return tableData;
+}
+
+-(int)calculateNumberRows:(NSArray *)result withAttribute:(NSString *)attributeName{
     NSString *category = @"";
     NSString *newCategory;
     int count = 0;
     for (NSManagedObject *managedObject in result) {
-        newCategory = [[managedObject valueForKey:@"category"] capitalizedString];
+        newCategory = [[managedObject valueForKey:attributeName] capitalizedString];
         if ([category isEqualToString:newCategory]) {
         }
         else{
@@ -153,21 +175,37 @@ NSArray *result;
     return count;
 }
 
--(NSArray *)calculateCategoryList:(NSArray *)result{
-    NSString *category = @"";
-    NSString *newCategory;
-    NSMutableArray *categoryTableData = [[NSMutableArray alloc] init];
-    for (NSManagedObject *managedObject in result) {
-        newCategory = [[managedObject valueForKey:@"category"] capitalizedString];
-        if ([category isEqualToString:newCategory]) {
-        }
-        else{
-            [categoryTableData addObject:newCategory];
-            category = newCategory;
-        }
+-(void)fetchToCreateIngredientTable:(NSIndexPath *)categoryRow{
+    
+    UITableViewCell *cell = [self.categoryTable cellForRowAtIndexPath:categoryRow];
+    NSString *category = cell.textLabel.text;
+    
+    //Initialize Fetch Request
+    NSFetchRequest *ingredientFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+
+    //Add Sort Descriptor
+    NSSortDescriptor *ingredientSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [ingredientFetchRequest setSortDescriptors:@[ingredientSortDescriptor]];
+
+    //Add Predicate
+    NSPredicate *ingredientPredicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", @"category", category];
+    [ingredientFetchRequest setPredicate:ingredientPredicate];
+
+    //Initialize Fetched Results Controller
+    self.ingredientFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:ingredientFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+
+    //Set Delegate
+    [self.ingredientFetchedResultsController setDelegate:self];
+
+    //Perform Fetches
+    NSError *error = nil;
+    [self.ingredientFetchedResultsController performFetch:&error];
+
+    if(error){
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
     }
-    NSArray *categoryTableDataImmutable = [categoryTableData copy];
-    return categoryTableDataImmutable;
+    ingredientResult = [self.ingredientFetchedResultsController fetchedObjects];
 }
 
 

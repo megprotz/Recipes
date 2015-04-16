@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *ingredientFetchedResultsController;
 
+@property (strong, nonatomic) NSFetchedResultsController *selectedFetchedResultsController;
+
 @end
 
 @implementation ViewController
@@ -140,6 +142,11 @@ NSArray *ingredientResult;
         [self.ingredientTable reloadData];
         [self.ingredientTable setHidden:NO];
     }
+    else { //if tableView==self.ingredientTable
+        NSString *ingredient = [self.ingredientTable cellForRowAtIndexPath:indexPath].textLabel.text;
+        BOOL selected = [self isSelected:ingredient];
+        
+    }
 
 }
 
@@ -206,6 +213,39 @@ NSArray *ingredientResult;
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
     ingredientResult = [self.ingredientFetchedResultsController fetchedObjects];
+}
+
+-(BOOL)isSelected:(NSString *)ingredient{
+    //Initialize Fetch Request
+    NSFetchRequest *selectedFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    
+    //Add Sort Descriptor
+    NSSortDescriptor *selectedSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"selected" ascending:YES];
+    [selectedFetchRequest setSortDescriptors:@[selectedSortDescriptor]];
+    
+    //Add Predicate
+    NSPredicate *selectedPredicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", @"name", ingredient];
+    [selectedFetchRequest setPredicate:selectedPredicate];
+    
+    //Initialize Fetched Results Controller
+    self.selectedFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:selectedFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    //Set Delegate
+    [self.ingredientFetchedResultsController setDelegate:self];
+    
+    //Perform Fetches
+    NSError *error = nil;
+    [self.ingredientFetchedResultsController performFetch:&error];
+    
+    if(error){
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    
+    //NSLog([[self.selectedFetchedResultsController fetchedObjects] objectAtIndex:0] ? @"yes" : @"no");
+    
+    return [[self.selectedFetchedResultsController fetchedObjects] objectAtIndex:0];
+
 }
 
 

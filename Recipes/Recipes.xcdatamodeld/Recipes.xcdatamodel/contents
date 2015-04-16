@@ -10,10 +10,11 @@
     <entity name="Ingredient" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" defaultValueString="other" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="isIn" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="FoodItem" inverseName="needs" inverseEntity="FoodItem" syncable="YES"/>
     </entity>
     <elements>
         <element name="FoodItem" positionX="-333" positionY="18" width="128" height="118"/>
-        <element name="Ingredient" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="Ingredient" positionX="-54" positionY="18" width="128" height="103"/>
     </elements>
 </model>

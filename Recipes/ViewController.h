@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *categoryTable;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -11,11 +11,7 @@
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *categoryFetchedResultsController;
-
-@property (strong, nonatomic) NSFetchedResultsController *ingredientFetchedResultsController;
-
-@property (strong, nonatomic) NSFetchedResultsController *selectedFetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -23,9 +19,14 @@
 
 NSArray *result;
 NSArray *ingredientResult;
+NSMutableArray *allSelectedIngredients;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    allSelectedIngredients = temp;
+    temp = nil;
     
     //Initialize Fetch Requests
     NSFetchRequest *categoryFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
@@ -35,21 +36,25 @@ NSArray *ingredientResult;
     [categoryFetchRequest setSortDescriptors:@[categorySortDescriptor]];
 
     //Initialize Fetched Results Controllers
-    self.categoryFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:categoryFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:categoryFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
     //Configure Fetched Results Controllers
-    [self.categoryFetchedResultsController setDelegate:self];
+    [self.fetchedResultsController setDelegate:self];
     
     //Perform Fetches
     NSError *error = nil;
-    [self.categoryFetchedResultsController performFetch:&error];
+    [self.fetchedResultsController performFetch:&error];
     
     if(error){
         NSLog(@"Unable to perform fetch.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
-    result = [self.categoryFetchedResultsController fetchedObjects];
+    result = [self.fetchedResultsController fetchedObjects];
 }
+
+//-(void)loadView{
+//    [super loadView];
+//}
 
 
 
@@ -131,6 +136,12 @@ NSArray *ingredientResult;
         
         cell.textLabel.text = [[self calculateList:ingredientResult forTable:@"name"] objectAtIndex:indexPath.row];
         
+        if ([self isSelected:[[self calculateList:ingredientResult forTable:@"name"] objectAtIndex:indexPath.row]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
         return cell;
 
     }
@@ -144,7 +155,8 @@ NSArray *ingredientResult;
     }
     else { //if tableView==self.ingredientTable
         NSString *ingredient = [self.ingredientTable cellForRowAtIndexPath:indexPath].textLabel.text;
-        BOOL selected = [self isSelected:ingredient];
+        [self changeSelectedValue:ingredient];
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         
     }
 
@@ -199,22 +211,23 @@ NSArray *ingredientResult;
     [ingredientFetchRequest setPredicate:ingredientPredicate];
 
     //Initialize Fetched Results Controller
-    self.ingredientFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:ingredientFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:ingredientFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 
     //Set Delegate
-    [self.ingredientFetchedResultsController setDelegate:self];
+    [self.fetchedResultsController setDelegate:self];
 
     //Perform Fetches
     NSError *error = nil;
-    [self.ingredientFetchedResultsController performFetch:&error];
+    [self.fetchedResultsController performFetch:&error];
 
     if(error){
         NSLog(@"Unable to perform fetch.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
-    ingredientResult = [self.ingredientFetchedResultsController fetchedObjects];
+    ingredientResult = [self.fetchedResultsController fetchedObjects];
 }
 
+//The following method returns true if the passed ingredient is selected. Returns false otherwise.
 -(BOOL)isSelected:(NSString *)ingredient{
     //Initialize Fetch Request
     NSFetchRequest *selectedFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
@@ -228,24 +241,95 @@ NSArray *ingredientResult;
     [selectedFetchRequest setPredicate:selectedPredicate];
     
     //Initialize Fetched Results Controller
-    self.selectedFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:selectedFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:selectedFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
     //Set Delegate
-    [self.ingredientFetchedResultsController setDelegate:self];
+    [self.fetchedResultsController setDelegate:self];
     
     //Perform Fetches
     NSError *error = nil;
-    [self.ingredientFetchedResultsController performFetch:&error];
+    [self.fetchedResultsController performFetch:&error];
     
     if(error){
         NSLog(@"Unable to perform fetch.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
     
-    //NSLog([[self.selectedFetchedResultsController fetchedObjects] objectAtIndex:0] ? @"yes" : @"no");
+    NSArray *selectedIngredients = [self.fetchedResultsController fetchedObjects];
     
-    return [[self.selectedFetchedResultsController fetchedObjects] objectAtIndex:0];
+    NSManagedObject *managedObject = [selectedIngredients objectAtIndex:0];
+   
+    return [[managedObject valueForKey:@"selected"] boolValue];
+}
 
+//The following method changes the "selected" state of the passed ingredient. Also adds/removes the passed ingredient to NSMutableArray allSelectedIngredients, as necessary.
+-(void)changeSelectedValue:(NSString *)ingredient{
+    //Initialize Fetch Request
+    NSFetchRequest *selectedFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    
+    //Add Sort Descriptor
+    NSSortDescriptor *selectedSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"selected" ascending:YES];
+    [selectedFetchRequest setSortDescriptors:@[selectedSortDescriptor]];
+    
+    //Add Predicate
+    NSPredicate *selectedPredicate = [NSPredicate predicateWithFormat:@"%K like[cd] %@", @"name", ingredient];
+    [selectedFetchRequest setPredicate:selectedPredicate];
+    
+    //Initialize Fetched Results Controller
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:selectedFetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    //Set Delegate
+    [self.fetchedResultsController setDelegate:self];
+    
+    //Perform Fetches
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if(error){
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    
+    NSArray *selectedIngredients = [self.fetchedResultsController fetchedObjects];
+    
+    NSManagedObject *managedObject = [selectedIngredients objectAtIndex:0];
+    
+    BOOL isSelected = ![[managedObject valueForKey:@"selected"] boolValue];
+    [managedObject setValue:@(isSelected) forKey:@"selected"];
+    if (isSelected) {
+        [allSelectedIngredients addObject:ingredient];
+    }
+    else{
+        [allSelectedIngredients removeObject:ingredient];
+    }
+    //UILabel *dynamicLabel = [[UILabel alloc] initWithFrame:CGRectMake(400,400,50,30)];
+    //[dynamicLabel setBackgroundColor:[UIColor redColor]];
+    //[self.view addSubview:dynamicLabel];
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 4;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    return 4;
+}
+
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
+//    Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MY_CELL" forIndexPath:indexPath];
+//    cell.label.text = [NSString stringWithFormat:@"%d",indexPath.item];
+//    return cell;
+//}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSError *error = nil;
+    
+    if (![self.managedObjectContext save:&error]) {
+        if (error) {
+            NSLog(@"Unable to save changes.");
+            NSLog(@"%@, %@", error, error.localizedDescription);
+        }
+    }
 }
 
 

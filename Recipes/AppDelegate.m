@@ -46,6 +46,7 @@
     NSManagedObject *flour = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [flour setValue:@"flour" forKey:@"name"];
     [flour setValue:@"dry" forKey:@"category"];
+    [flour setValue:@YES forKey:@"selected"];
     NSManagedObject *sugar = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [sugar setValue:@"sugar" forKey:@"name"];
     [sugar setValue:@"dry" forKey:@"category"];
@@ -195,7 +196,28 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {}
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+        NSError *fetchError = nil;
+        NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+        if(!fetchError){
+            for (NSManagedObject *managedObject in result) {
+                [managedObject setValue:@NO forKey:@"selected"];
+            }
+        }
+        else{
+            NSLog(@"Error fetching data.");
+            NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
+        }
+        NSError *error = nil;
+        for (NSManagedObject *managedObject in result) {
+            if (![managedObject.managedObjectContext save:&error]) {
+                NSLog(@"Unable to save managed object context.");
+                NSLog(@"%@, %@", error, error.localizedDescription);
+            }
+        }
+
+    }
     else{
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];

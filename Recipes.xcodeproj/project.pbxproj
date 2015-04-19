@@ -15,6 +15,8 @@
 		2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937C1ACB0CF7005D7144 /* Images.xcassets */; };
 		2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937E1ACB0CF7005D7144 /* LaunchScreen.xib */; };
 		2B0B938C1ACB0CF7005D7144 /* RecipesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */; };
+		2BB3687D1AE4448400A35DE0 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3687C1AE4448400A35DE0 /* Cell.m */; };
+		2BB368801AE4456400A35DE0 /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3687F1AE4456400A35DE0 /* CollectionViewLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		2B0B93851ACB0CF7005D7144 /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0B938A1ACB0CF7005D7144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipesTests.m; sourceTree = "<group>"; };
+		2BB3687B1AE4448400A35DE0 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		2BB3687C1AE4448400A35DE0 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		2BB3687E1AE4456400A35DE0 /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
+		2BB3687F1AE4456400A35DE0 /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,10 @@
 				2B0B93711ACB0CF7005D7144 /* AppDelegate.m */,
 				2B0B93761ACB0CF7005D7144 /* ViewController.h */,
 				2B0B93771ACB0CF7005D7144 /* ViewController.m */,
+				2BB3687B1AE4448400A35DE0 /* Cell.h */,
+				2BB3687C1AE4448400A35DE0 /* Cell.m */,
+				2BB3687E1AE4456400A35DE0 /* CollectionViewLayout.h */,
+				2BB3687F1AE4456400A35DE0 /* CollectionViewLayout.m */,
 				2B0B93791ACB0CF7005D7144 /* Main.storyboard */,
 				2B0B937C1ACB0CF7005D7144 /* Images.xcassets */,
 				2B0B937E1ACB0CF7005D7144 /* LaunchScreen.xib */,
@@ -222,9 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB3687D1AE4448400A35DE0 /* Cell.m in Sources */,
 				2B0B93721ACB0CF7005D7144 /* AppDelegate.m in Sources */,
 				2B0B936F1ACB0CF7005D7144 /* main.m in Sources */,
 				2B0B93781ACB0CF7005D7144 /* ViewController.m in Sources */,
+				2BB368801AE4456400A35DE0 /* CollectionViewLayout.m in Sources */,
 				2B0B93751ACB0CF7005D7144 /* Recipes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

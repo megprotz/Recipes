@@ -9,7 +9,7 @@
 #import "Cell.h"
 
 @implementation Cell
-
+/*
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -24,5 +24,5 @@
     }
     return self;
 }
-
+*/
 @end

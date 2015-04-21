@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Cell.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *ingredientTable;
 

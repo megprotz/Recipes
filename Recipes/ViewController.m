@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <CoreData/CoreData.h>
+#import "Cell.h"
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
@@ -157,7 +158,7 @@ NSMutableArray *allSelectedIngredients;
         NSString *ingredient = [self.ingredientTable cellForRowAtIndexPath:indexPath].textLabel.text;
         [self changeSelectedValue:ingredient];
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        
+        [self.collectionView reloadData];
     }
 
 }
@@ -308,18 +309,23 @@ NSMutableArray *allSelectedIngredients;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 4;
+    return allSelectedIngredients.count/4+1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     return 4;
 }
 
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
-//    Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MY_CELL" forIndexPath:indexPath];
-//    cell.label.text = [NSString stringWithFormat:@"%d",indexPath.item];
-//    return cell;
-//}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
+    if (allSelectedIngredients.count>0) {
+        cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.item];
+    }
+    else{
+        cell.ingredientLabel.text = @"";
+    }
+    return cell;
+}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSError *error = nil;

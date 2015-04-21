@@ -49,7 +49,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="132" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
                                                     <rect key="frame" x="23" y="10" width="86" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,6 +58,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="leading" secondItem="g7m-Jp-Qrd" secondAttribute="leading" constant="20" id="M1v-rZ-u1R"/>
+                                            <constraint firstAttribute="bottom" secondItem="kIW-4g-N2o" secondAttribute="bottom" constant="20" id="jFP-fw-Dd7"/>
+                                            <constraint firstAttribute="trailing" secondItem="kIW-4g-N2o" secondAttribute="trailing" constant="20" id="lGe-Xx-hZP"/>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="20" id="p44-MB-mS9"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="ingredientLabel" destination="kIW-4g-N2o" id="7q8-Pf-vNx"/>
                                         </connections>

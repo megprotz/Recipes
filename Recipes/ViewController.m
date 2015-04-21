@@ -25,6 +25,9 @@ NSMutableArray *allSelectedIngredients;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //The following line makes sure that the ingredient table loads in the correct view location.
+    self.ingredientTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     allSelectedIngredients = temp;
     temp = nil;
@@ -303,9 +306,6 @@ NSMutableArray *allSelectedIngredients;
     else{
         [allSelectedIngredients removeObject:ingredient];
     }
-    //UILabel *dynamicLabel = [[UILabel alloc] initWithFrame:CGRectMake(400,400,50,30)];
-    //[dynamicLabel setBackgroundColor:[UIColor redColor]];
-    //[self.view addSubview:dynamicLabel];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -313,18 +313,29 @@ NSMutableArray *allSelectedIngredients;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    if (section<allSelectedIngredients.count/4) {
+        return 4;
+    }
+    return allSelectedIngredients.count%4;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
-    if (allSelectedIngredients.count>0) {
-        cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.item];
-    }
-    else{
-        cell.ingredientLabel.text = @"";
-    }
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
+    cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
     return cell;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
+    CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName : [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]}];
+    //NSLog(@"f",labelsize.width);
+    //long row = [indexPath row];
+    
+    //image = [UIImage imageNamed:_carImages[row]];
+    
+    return labelsize;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

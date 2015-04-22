@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <CoreData/CoreData.h>
 #import "Cell.h"
+#import <UIKit/UIKit.h>
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
@@ -26,7 +27,7 @@ NSMutableArray *allSelectedIngredients;
     [super viewDidLoad];
     
     //The following line makes sure that the ingredient table loads in the correct view location.
-    self.ingredientTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.categoryTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     allSelectedIngredients = temp;
@@ -322,21 +323,44 @@ NSMutableArray *allSelectedIngredients;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
     cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
+    [cell.deleteButton addTarget:self action:@selector(collectionViewCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
+- (IBAction)collectionViewCellButtonPressed:(UIButton *)button{
+    
+    //Access the cell
+    Cell *cell = (Cell*)button.superview.superview;
+
+    [self changeSelectedValue:cell.ingredientLabel.text];
+    
+    [self.collectionView reloadData];
+    [self.ingredientTable reloadData];
+}
+
+/*
+//The following method is supposed to adjust the size of each cell based on the width of the text label. It is not currently working, so I am commenting out to come back to later.
+#pragma mark -
+#pragma mark UICollectionViewFlowLayoutDelegate
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
-    CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName : [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]}];
-    //NSLog(@"f",labelsize.width);
-    //long row = [indexPath row];
+    //Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
     
-    //image = [UIImage imageNamed:_carImages[row]];
+    //[cell.ingredientLabel sizeToFit];
     
-    return labelsize;
+    //return [(NSString*)[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:NULL];
+    
+    //UIFont *font = [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize];
+    
+    //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:
+    
+    //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]}];
+
+    return CGSizeMake(200, 60);
 }
+*/
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSError *error = nil;

@@ -12,4 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ingredientLabel;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
+
+
 @end

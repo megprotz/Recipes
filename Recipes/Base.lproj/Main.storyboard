@@ -42,12 +42,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="132" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
                                                     <rect key="frame" x="8" y="8" width="63" height="35"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-fp-hz6">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-fp-hz6">
                                                     <rect key="frame" x="78" y="12" width="46" height="30"/>
                                                     <state key="normal" title="X">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,6 +56,15 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="leading" secondItem="kIW-4g-N2o" secondAttribute="trailing" constant="7" id="38f-SG-JdM"/>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="10" id="C0V-hd-Sbp"/>
+                                            <constraint firstAttribute="bottom" secondItem="kIW-4g-N2o" secondAttribute="bottom" constant="10" id="Mp0-M3-tRA"/>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="leading" secondItem="g7m-Jp-Qrd" secondAttribute="leading" constant="10" id="SOT-Dv-6Pp"/>
+                                            <constraint firstAttribute="bottom" secondItem="kkc-fp-hz6" secondAttribute="bottom" constant="10" id="Ycv-Jn-AzX"/>
+                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="10" id="dVa-5i-SRa"/>
+                                            <constraint firstAttribute="trailing" secondItem="kkc-fp-hz6" secondAttribute="trailing" constant="10" id="wTK-Kg-NrB"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="deleteButton" destination="kkc-fp-hz6" id="anp-zR-KD5"/>
                                             <outlet property="ingredientLabel" destination="kIW-4g-N2o" id="7q8-Pf-vNx"/>

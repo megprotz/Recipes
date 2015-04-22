@@ -26,6 +26,8 @@ NSMutableArray *allSelectedIngredients;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //[self.collectionView registerClass:[Cell class] forCellWithReuseIdentifier:@"MyCell"];
+    
     //The following line makes sure that the ingredient table loads in the correct view location.
     self.categoryTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
@@ -325,6 +327,8 @@ NSMutableArray *allSelectedIngredients;
     cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
     [cell.deleteButton addTarget:self action:@selector(collectionViewCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+    NSLog(@"%@", [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]);
+    
     return cell;
 }
 
@@ -339,14 +343,24 @@ NSMutableArray *allSelectedIngredients;
     [self.ingredientTable reloadData];
 }
 
-/*
+
 //The following method is supposed to adjust the size of each cell based on the width of the text label. It is not currently working, so I am commenting out to come back to later.
 #pragma mark -
 #pragma mark UICollectionViewFlowLayoutDelegate
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    //Cell *cell = (Cell *)[self collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    //[collectionView reloadData];
+    
+    NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
+    
+    //NSLog(@"%@", ingredient);
+    
     //Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
+    
+     //NSLog(@"%@", cell.ingredientLabel.text);
     
     //[cell.ingredientLabel sizeToFit];
     
@@ -356,11 +370,15 @@ NSMutableArray *allSelectedIngredients;
     
     //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:
     
+    CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@".HelveticaNeueInterface-Regular" size:17.0]}];
+    
     //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]}];
 
-    return CGSizeMake(200, 60);
+    //return CGSizeMake(200, 60);
+    
+    return labelsize;
 }
-*/
+
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     NSError *error = nil;

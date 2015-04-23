@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Select Ingredients-->
@@ -25,11 +26,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="sYk-j9-oee"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z06-8Z-TTQ">
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Vv7-BR-Wi4"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nJO-u6-34X"/>
+                                </connections>
+                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cLj-t6-tYa">
                                 <rect key="frame" x="16" y="424" width="568" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g1u-LU-JJO">
-                                    <size key="itemSize" width="132" height="53"/>
+                                    <size key="itemSize" width="101" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -39,31 +48,31 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="132" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="101" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
-                                                    <rect key="frame" x="8" y="8" width="63" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-fp-hz6">
-                                                    <rect key="frame" x="78" y="12" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-fp-hz6">
+                                                    <rect key="frame" x="51" y="8" width="50" height="24"/>
                                                     <state key="normal" title="X">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="leading" secondItem="kIW-4g-N2o" secondAttribute="trailing" constant="7" id="38f-SG-JdM"/>
-                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="10" id="C0V-hd-Sbp"/>
-                                            <constraint firstAttribute="bottom" secondItem="kIW-4g-N2o" secondAttribute="bottom" constant="10" id="Mp0-M3-tRA"/>
-                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="leading" secondItem="g7m-Jp-Qrd" secondAttribute="leading" constant="10" id="SOT-Dv-6Pp"/>
-                                            <constraint firstAttribute="bottom" secondItem="kkc-fp-hz6" secondAttribute="bottom" constant="10" id="Ycv-Jn-AzX"/>
-                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="10" id="dVa-5i-SRa"/>
-                                            <constraint firstAttribute="trailing" secondItem="kkc-fp-hz6" secondAttribute="trailing" constant="10" id="wTK-Kg-NrB"/>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="leading" secondItem="g7m-Jp-Qrd" secondAttribute="leadingMargin" id="4em-Bx-Y8E"/>
+                                            <constraint firstItem="kIW-4g-N2o" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="topMargin" id="EvZ-b4-P68"/>
+                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="bottom" secondItem="g7m-Jp-Qrd" secondAttribute="bottomMargin" id="MMB-jX-xnE"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="kkc-fp-hz6" secondAttribute="trailing" constant="-8" id="OtP-Gc-hTO"/>
+                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="topMargin" id="Wco-5g-jW9"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="kIW-4g-N2o" secondAttribute="bottom" constant="3" id="WrJ-Ey-fY0"/>
+                                            <constraint firstItem="kkc-fp-hz6" firstAttribute="leading" secondItem="kIW-4g-N2o" secondAttribute="trailing" constant="1" id="qHb-no-a9F"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="deleteButton" destination="kkc-fp-hz6" id="anp-zR-KD5"/>
@@ -76,14 +85,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Tqe-86-UBV"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z06-8Z-TTQ">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="416"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Vv7-BR-Wi4"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nJO-u6-34X"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

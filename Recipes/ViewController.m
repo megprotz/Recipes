@@ -17,7 +17,9 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    Cell *sizingCell;
+}
 
 NSArray *result;
 NSArray *ingredientResult;
@@ -27,6 +29,12 @@ NSMutableArray *allSelectedIngredients;
     [super viewDidLoad];
     
     //[self.collectionView registerClass:[Cell class] forCellWithReuseIdentifier:@"MyCell"];
+    
+    
+    // get a cell as template for sizing
+    //_sizingCell = [[cellNib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    
+    //sizingCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:nil];
     
     //The following line makes sure that the ingredient table loads in the correct view location.
     self.categoryTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
@@ -343,8 +351,9 @@ NSMutableArray *allSelectedIngredients;
     [self.ingredientTable reloadData];
 }
 
-
+/*
 //The following method is supposed to adjust the size of each cell based on the width of the text label. It is not currently working, so I am commenting out to come back to later.
+//This method needs work. Can't figure out how to correctly set size of cells/label.
 #pragma mark -
 #pragma mark UICollectionViewFlowLayoutDelegate
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -354,7 +363,7 @@ NSMutableArray *allSelectedIngredients;
     
     //[collectionView reloadData];
     
-    NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
+    //NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
     
     //NSLog(@"%@", ingredient);
     
@@ -370,14 +379,33 @@ NSMutableArray *allSelectedIngredients;
     
     //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:
     
-    CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@".HelveticaNeueInterface-Regular" size:17.0]}];
+    //for (NSString(*font) in [UIFont fontNamesForFamilyName:@"HelveticaNeue"]) {
+        //NSLog(@"this font %@", font);
+    //}
+    
+    //CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17.0]}];
     
     //CGSize labelsize = [[allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]}];
 
-    //return CGSizeMake(200, 60);
+    return CGSizeMake(300, 60);
     
-    return labelsize;
+    //return labelsize;
 }
+*/
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
+    
+    sizingCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:nil];
+    
+    sizingCell.ingredientLabel.text = ingredient;
+    
+    CGSize size = [sizingCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    return [sizingCell intrinsicContentSize];
+}
+
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

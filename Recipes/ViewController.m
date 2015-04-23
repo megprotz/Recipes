@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Cell.h"
 #import <UIKit/UIKit.h>
+#import "RecipeTableViewController.h"
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
@@ -335,7 +336,8 @@ NSMutableArray *allSelectedIngredients;
     cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
     [cell.deleteButton addTarget:self action:@selector(collectionViewCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSLog(@"%@", [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]);
+    //Below line was trying to get font name to help with adjusting cell size
+    //NSLog(@"%@", [UIFont fontWithName:cell.ingredientLabel.font.fontName size:cell.ingredientLabel.font.pointSize]);
     
     return cell;
 }
@@ -392,7 +394,7 @@ NSMutableArray *allSelectedIngredients;
     //return labelsize;
 }
 */
-
+/*
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
@@ -401,11 +403,11 @@ NSMutableArray *allSelectedIngredients;
     
     sizingCell.ingredientLabel.text = ingredient;
     
-    CGSize size = [sizingCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     return [sizingCell intrinsicContentSize];
 }
-
+*/
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -416,6 +418,15 @@ NSMutableArray *allSelectedIngredients;
             NSLog(@"Unable to save changes.");
             NSLog(@"%@, %@", error, error.localizedDescription);
         }
+    }
+}
+
+////////////     4/23/15      IN THE PROCESS OF TRYING TO PASS ALLSELECTEDINGREDIENTS array between view controllers///////////////////
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"toRecipeList"]){
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        RecipeTableViewController *controller = (RecipeTableViewController *)navController.topViewController;
+        controller.allSelectedIngredients = allSelectedIngredients;
     }
 }
 

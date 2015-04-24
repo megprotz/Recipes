@@ -10,4 +10,8 @@
 
 @interface RecipeCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *recipeImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *recipeName;
+
 @end

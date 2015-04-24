@@ -403,9 +403,15 @@ NSMutableArray *allSelectedIngredients;
     
     sizingCell.ingredientLabel.text = ingredient;
     
+    //CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:sizingCell.ingredientLabel.font.fontName size:sizingCell.ingredientLabel.font.pointSize]}];
+    
+    CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17.0]}];
+    
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
-    return [sizingCell intrinsicContentSize];
+    //return [sizingCell intrinsicContentSize];
+    
+    return labelsize;
 }
 */
 
@@ -421,11 +427,11 @@ NSMutableArray *allSelectedIngredients;
     }
 }
 
-////////////     4/23/15      IN THE PROCESS OF TRYING TO PASS ALLSELECTEDINGREDIENTS array between view controllers///////////////////
+//The following method sends the allSelectedIngredients array to the Recipe Table View Controller.
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"toRecipeList"]){
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        RecipeTableViewController *controller = (RecipeTableViewController *)navController.topViewController;
+        RecipeTableViewController *controller = (RecipeTableViewController *)navController;
         controller.allSelectedIngredients = allSelectedIngredients;
     }
 }

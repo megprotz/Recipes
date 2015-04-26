@@ -32,14 +32,17 @@
     NSManagedObject *ccCookie = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [ccCookie setValue:@"Chocolate Chip Cookies" forKey:@"title"];
     [ccCookie setValue:@30 forKey:@"cookTime"];
+    [ccCookie setValue:@"chocolateChipCookies.jpg" forKey:@"image"];
     [ccCookie setValue:@"Combine dry ingredients. Set aside. Combine butter, egg, sugar, vanilla. Add in flour mixture and chocolate chips. Bake at 325 for 7.5 min." forKey:@"instructions"];
     NSManagedObject *cCake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [cCake setValue:@"Chocolate Cake" forKey:@"title"];
     [cCake setValue:@60 forKey:@"cookTime"];
+    [cCake setValue:@"chocolateCake.jpg" forKey:@"image"];
     [cCake setValue:@"Stir together sugar, flour, cocoa, baking powder, baking soda, and salt. Add eggs, milk, oil and vanilla. Stir in boiling water. Bake 30 to 35 min at 350." forKey:@"instructions"];
     NSManagedObject *vanillaCupcake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [vanillaCupcake setValue:@"Vanilla Cupcake" forKey:@"title"];
     [vanillaCupcake setValue:@35 forKey:@"cookTime"];
+    [vanillaCupcake setValue:@"vanillaCupcake.jpg" forKey:@"image"];
     [vanillaCupcake setValue:@"Mix butter and sugar until light and fluffy. Stir in eggs one at a time. Stir in vanill and flour until just mixed. Bake at 350 18 to 20 min." forKey:@"instructions"];
     
     //Create Ingredient Objects

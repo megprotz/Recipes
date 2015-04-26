@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 mmp001. All rights reserved.
 //
 
-#import "RecipeCell.h"
+#import "RecipeTableCell.h"
 
-@implementation RecipeCell
+@implementation RecipeTableCell
 
 @end

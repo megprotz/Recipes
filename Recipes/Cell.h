@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
-- (CGSize)intrinsicContentSize;
+//- (CGSize)intrinsicContentSize;
 
 
 

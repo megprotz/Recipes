@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ELV-tO-DPl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Select Ingredients-->
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7eT-JS-UDa">
-                                <rect key="frame" x="304" y="0.0" width="296" height="416"/>
+                                <rect key="frame" x="304" y="0.0" width="296" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="ymF-3p-VBR"/>
@@ -26,8 +25,11 @@
                                 </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cLj-t6-tYa">
-                                <rect key="frame" x="16" y="424" width="568" height="127"/>
+                                <rect key="frame" x="16" y="298" width="568" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="pYH-5m-lgM"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g1u-LU-JJO">
                                     <size key="itemSize" width="144" height="54"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -51,14 +53,17 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="kIW-4g-N2o">
                                                     <rect key="frame" x="8" y="8" width="90" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="kIW-4g-N2o" firstAttribute="leading" secondItem="g7m-Jp-Qrd" secondAttribute="leading" constant="8" id="Lyz-GE-TFJ"/>
                                             <constraint firstItem="kIW-4g-N2o" firstAttribute="top" secondItem="g7m-Jp-Qrd" secondAttribute="top" constant="8" id="Qvy-of-Vwr"/>
@@ -78,41 +83,40 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Tqe-86-UBV"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kS-kO-iyR">
-                                <rect key="frame" x="277" y="562" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="syg-bJ-WAW" kind="show" identifier="toRecipeList" id="5Xk-EA-fZY"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z06-8Z-TTQ">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Vv7-BR-Wi4"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nJO-u6-34X"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kS-kO-iyR">
+                                <rect key="frame" x="264" y="540" width="72" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="syg-bJ-WAW" kind="show" identifier="toRecipeList" id="5Xk-EA-fZY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cLj-t6-tYa" firstAttribute="top" secondItem="7eT-JS-UDa" secondAttribute="bottom" constant="8" id="0NE-KV-fps"/>
-                            <constraint firstAttribute="trailing" secondItem="cLj-t6-tYa" secondAttribute="trailing" constant="16" id="1MF-x1-Abt"/>
-                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="width" secondItem="7eT-JS-UDa" secondAttribute="width" id="AVz-Rh-9WR"/>
-                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="height" secondItem="7eT-JS-UDa" secondAttribute="height" id="E4s-e7-c4y"/>
-                            <constraint firstAttribute="centerX" secondItem="0kS-kO-iyR" secondAttribute="centerX" id="ISG-Cu-MQg"/>
-                            <constraint firstAttribute="trailing" secondItem="7eT-JS-UDa" secondAttribute="trailing" id="PSl-3i-tBX"/>
-                            <constraint firstItem="0kS-kO-iyR" firstAttribute="top" secondItem="cLj-t6-tYa" secondAttribute="bottom" constant="11" id="QOp-58-l37"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0kS-kO-iyR" secondAttribute="bottom" constant="8" id="XZU-Ak-w5a"/>
-                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="width" secondItem="7eT-JS-UDa" secondAttribute="height" multiplier="37:52" id="atd-pI-XgR"/>
-                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="aya-DG-5uf"/>
-                            <constraint firstItem="7eT-JS-UDa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bqf-Pr-L7c"/>
-                            <constraint firstItem="7eT-JS-UDa" firstAttribute="leading" secondItem="z06-8Z-TTQ" secondAttribute="trailing" constant="8" id="dGn-gO-NLd"/>
-                            <constraint firstItem="cLj-t6-tYa" firstAttribute="top" secondItem="z06-8Z-TTQ" secondAttribute="bottom" constant="8" id="gZW-6W-2mb"/>
-                            <constraint firstItem="cLj-t6-tYa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="pEW-oH-Ecc"/>
-                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uXm-Mk-h7C"/>
+                            <constraint firstItem="cLj-t6-tYa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="31M-wA-kqP"/>
+                            <constraint firstAttribute="bottom" secondItem="0kS-kO-iyR" secondAttribute="bottom" constant="20" id="E6Y-XV-aZc"/>
+                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FjD-0S-NbL"/>
+                            <constraint firstItem="cLj-t6-tYa" firstAttribute="top" secondItem="7eT-JS-UDa" secondAttribute="bottom" constant="8" id="NAN-qc-UW8"/>
+                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="width" secondItem="7eT-JS-UDa" secondAttribute="width" id="Q2p-8Z-MNG"/>
+                            <constraint firstItem="7eT-JS-UDa" firstAttribute="leading" secondItem="z06-8Z-TTQ" secondAttribute="trailing" constant="8" id="RDd-YD-Uou"/>
+                            <constraint firstAttribute="trailing" secondItem="cLj-t6-tYa" secondAttribute="trailing" constant="16" id="WmP-Tu-12c"/>
+                            <constraint firstItem="7eT-JS-UDa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="an0-Ov-vTT"/>
+                            <constraint firstAttribute="centerX" secondItem="0kS-kO-iyR" secondAttribute="centerX" id="dUT-EG-R8N"/>
+                            <constraint firstItem="cLj-t6-tYa" firstAttribute="top" secondItem="z06-8Z-TTQ" secondAttribute="bottom" constant="8" id="fHa-WP-5gT"/>
+                            <constraint firstAttribute="trailing" secondItem="7eT-JS-UDa" secondAttribute="trailing" id="fK8-f7-M5c"/>
+                            <constraint firstItem="z06-8Z-TTQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qv9-px-h0A"/>
+                            <constraint firstItem="0kS-kO-iyR" firstAttribute="top" secondItem="cLj-t6-tYa" secondAttribute="bottom" constant="12" id="wqF-Cx-Ere"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Ingredients" id="K3u-x8-skW"/>

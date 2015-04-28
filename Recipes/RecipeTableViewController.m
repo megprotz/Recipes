@@ -36,6 +36,8 @@ NSInteger indexOfSelectedRow;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
     
+    ingredientNames = [[NSMutableArray alloc] init];
+    
     //Initialize Fetch Requests
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
     
@@ -191,62 +193,59 @@ NSInteger indexOfSelectedRow;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    indexOfSelectedRow = indexPath.row;
-    
-    //Perform fetch to determine all necessary ingredients for selected recipe
-    //Initialize Fetch Requests
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
-    
-    //Add Sort Descriptors
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    //Add Predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY isIn.title == %@)", [recipeTitles objectAtIndex:indexOfSelectedRow]];
-    [fetchRequest setPredicate:predicate];
-    
-    //Initialize Fetched Results Controllers
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    
-    //Configure Fetched Results Controllers
-    [self.fetchedResultsController setDelegate:self];
-
-    //Perform Fetches
-    NSError *error = nil;
-    [self.fetchedResultsController performFetch:&error];
-    
-    if(error){
-        NSLog(@"Unable to perform fetch.");
-        NSLog(@"%@, %@", error, error.localizedDescription);
-    }
-        
-    ingredients = [self.fetchedResultsController fetchedObjects];
-    
-    NSString *newIngredient;
-    
-    for (NSManagedObject *managedObject in ingredients) {
-        //Add ingredient name:
-        newIngredient = [[managedObject valueForKey:@"name"] capitalizedString];
-        [ingredientNames addObject:newIngredient];
-    }
-
+    //TO-DO: IMPLEMENT THIS METHOD
 }
 
 //The following method sends necessary information (title, time, ingredients, image, instructions) to the Individual Recipe View Controller.
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"toRecipePage"]){
         
-        ////   BEWARE: this method seems to be accessed before 'didSelectRowAtIndexPath' so values being passed are not correct. Need to figure out a way to fix this!!!!! //////
-        /*
+        NSIndexPath *indexPath = [[self tableView] indexPathForCell:sender];
+        
+        //Perform fetch to determine all necessary ingredients for selected recipe
+        //Initialize Fetch Requests
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+        
+        //Add Sort Descriptors
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        
+        //Add Predicate
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY isIn.title == %@)", [recipeTitles objectAtIndex:indexPath.row]];
+        [fetchRequest setPredicate:predicate];
+        
+        //Initialize Fetched Results Controllers
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+        
+        //Configure Fetched Results Controllers
+        [self.fetchedResultsController setDelegate:self];
+        
+        //Perform Fetches
+        NSError *error = nil;
+        [self.fetchedResultsController performFetch:&error];
+        
+        if(error){
+            NSLog(@"Unable to perform fetch.");
+            NSLog(@"%@, %@", error, error.localizedDescription);
+        }
+        
+        ingredients = [self.fetchedResultsController fetchedObjects];
+        
+        NSString *newIngredient;
+        
+        for (NSManagedObject *managedObject in ingredients) {
+            //Add ingredient name:
+            newIngredient = [[managedObject valueForKey:@"name"] capitalizedString];
+            [ingredientNames addObject:newIngredient];
+        }
+        
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
         IndividualRecipeViewController *controller = (IndividualRecipeViewController *)navController;
-        controller.title = [recipeTitles objectAtIndex:indexOfSelectedRow];
-        controller.time = [recipeTimes objectAtIndex:indexOfSelectedRow];
-        controller.instructions = [recipeInstructions objectAtIndex:indexOfSelectedRow];
-        controller.image = [recipeImages objectAtIndex:indexOfSelectedRow];
+        controller.title = [recipeTitles objectAtIndex:indexPath.row];
+        controller.time = [recipeTimes objectAtIndex:indexPath.row];
+        controller.instructions = [recipeInstructions objectAtIndex:indexPath.row];
+        controller.image = [recipeImages objectAtIndex:indexPath.row];
         controller.ingredients = ingredientNames;
-        */ 
-
     }
 }
 

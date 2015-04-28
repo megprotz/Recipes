@@ -191,19 +191,10 @@
                         <viewControllerLayoutGuide type="top" id="idC-KZ-aVA"/>
                         <viewControllerLayoutGuide type="bottom" id="QSM-4P-aob"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cEY-AE-WOe">
+                    <view key="view" contentMode="scaleToFill" id="cEY-AE-WOe" customClass="IndividualRecipeView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNS-XF-1eD">
-                                <rect key="frame" x="16" y="72" width="568" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="h47-Cf-Pdz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9o4-WM-Uim">
                                 <rect key="frame" x="16" y="343" width="568" height="28"/>
                                 <constraints>
@@ -231,6 +222,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNS-XF-1eD">
+                                <rect key="frame" x="16" y="72" width="568" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="h47-Cf-Pdz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -252,6 +252,13 @@
                             <constraint firstItem="9o4-WM-Uim" firstAttribute="leading" secondItem="cEY-AE-WOe" secondAttribute="leading" constant="16" id="tc5-t0-nJf"/>
                             <constraint firstAttribute="trailing" secondItem="9o4-WM-Uim" secondAttribute="trailing" constant="16" id="xjM-mp-v4v"/>
                         </constraints>
+                        <connections>
+                            <outlet property="recipeImage" destination="sxv-75-0fv" id="QNI-Ll-Kaa"/>
+                            <outlet property="recipeIngredients" destination="clP-JO-5C7" id="6cM-nf-gBK"/>
+                            <outlet property="recipeInstructions" destination="CHY-YQ-74X" id="8Gb-tM-XTn"/>
+                            <outlet property="recipeTime" destination="9o4-WM-Uim" id="9Ia-Y2-zor"/>
+                            <outlet property="recipeTitle" destination="HNS-XF-1eD" id="WhE-yX-mqf"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLt-bU-MYe" userLabel="First Responder" sceneMemberID="firstResponder"/>

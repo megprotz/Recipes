@@ -7,18 +7,19 @@
 //
 
 #import "IndividualRecipeViewController.h"
+#import "IndividualRecipeView.h"
 
 @implementation IndividualRecipeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"tite: %@", self.title);
-    NSLog(@"instructions: %@", self.instructions);
-    NSLog(@"time: %@", self.time);
-    for (NSString *string in self.ingredients) {
-        NSLog(@"%@", string);
-    }
     
+    IndividualRecipeView *recipeView = (IndividualRecipeView *)self.view;
+    recipeView.recipeTitle.text = self.title;
+    recipeView.recipeTime.text = self.time.stringValue;
+    recipeView.recipeInstructions.text = self.instructions;
+    //recipeView.recipeImage = UIViewContentModeScaleAspectFit;
+    recipeView.recipeImage.image = self.image;
 }
 
 @end

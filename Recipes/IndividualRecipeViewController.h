@@ -10,7 +10,7 @@
 
 @interface IndividualRecipeViewController : UIViewController
 
-@property(nonatomic) NSString *title;
+@property(nonatomic) NSString *nameOfRecipe;
 @property(nonatomic) NSNumber *time;
 @property(nonatomic) NSArray *ingredients;
 @property(nonatomic) NSString *instructions;

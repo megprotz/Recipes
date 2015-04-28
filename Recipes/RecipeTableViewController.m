@@ -233,6 +233,8 @@ NSInteger indexOfSelectedRow;
         
         NSString *newIngredient;
         
+        [ingredientNames removeAllObjects];
+        
         for (NSManagedObject *managedObject in ingredients) {
             //Add ingredient name:
             newIngredient = [[managedObject valueForKey:@"name"] capitalizedString];
@@ -241,7 +243,7 @@ NSInteger indexOfSelectedRow;
         
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
         IndividualRecipeViewController *controller = (IndividualRecipeViewController *)navController;
-        controller.title = [recipeTitles objectAtIndex:indexPath.row];
+        controller.nameOfRecipe = [recipeTitles objectAtIndex:indexPath.row];
         controller.time = [recipeTimes objectAtIndex:indexPath.row];
         controller.instructions = [recipeInstructions objectAtIndex:indexPath.row];
         controller.image = [recipeImages objectAtIndex:indexPath.row];

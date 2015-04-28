@@ -15,11 +15,25 @@
     [super viewDidLoad];
     
     IndividualRecipeView *recipeView = (IndividualRecipeView *)self.view;
-    recipeView.recipeTitle.text = self.title;
-    recipeView.recipeTime.text = self.time.stringValue;
+    
+    //Populate view labels and images with proper data passed from RecipeTableViewController:
+    recipeView.recipeTitle.text = self.nameOfRecipe;
+    recipeView.recipeTime.text = [NSString stringWithFormat: @"Total Time: %@ minutes", self.time.stringValue];
     recipeView.recipeInstructions.text = self.instructions;
-    //recipeView.recipeImage = UIViewContentModeScaleAspectFit;
+    recipeView.recipeImage.contentMode = UIViewContentModeScaleAspectFit;
     recipeView.recipeImage.image = self.image;
+    
+    NSString *allIngredientsList = nil;
+    for (NSString *ingredient in self.ingredients) {
+        if (allIngredientsList == nil) {
+            allIngredientsList = [NSString stringWithFormat:@"%@", [ingredient capitalizedString]];
+        }
+        else {
+            allIngredientsList = [NSString stringWithFormat:@"%@, %@", allIngredientsList, [ingredient capitalizedString]];
+        }
+    }
+    
+    recipeView.recipeIngredients.text = [NSString stringWithFormat:@"Necessary Ingredients: %@", allIngredientsList];
 }
 
 @end

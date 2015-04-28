@@ -246,7 +246,7 @@
     //Configure Window
     [self.window setRootViewController:rootNavigationController];
     
-    ///////////////////////////////////////////////////////////////////////////////////
+    /*///////////////////////////////////////////////////////////////////////////////////
     //Practice Fetching (to make sure it works) ***should remove this later***
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
     ////////SORT DESCRIPTOR. THERE CAN BE AN OPTION ON APP TO SORT BY.../////////
@@ -265,7 +265,7 @@
         NSLog(@"Error fetching data.");
         NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
     }
-    ///////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////*/
     
     return YES;
 }

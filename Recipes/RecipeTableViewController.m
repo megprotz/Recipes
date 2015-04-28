@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "RecipeTableCell.h"
+#import "IndividualRecipeViewController.h"
 
 @interface RecipeTableViewController () <NSFetchedResultsControllerDelegate>
 
@@ -21,8 +22,13 @@
 @implementation RecipeTableViewController
 
 NSArray *recipes;
+NSArray *ingredients;
+NSMutableArray *ingredientNames;
 NSMutableArray *recipeTitles;
 NSMutableArray *recipeImages;
+NSMutableArray *recipeTimes;
+NSMutableArray *recipeInstructions;
+NSInteger indexOfSelectedRow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,21 +74,37 @@ NSMutableArray *recipeImages;
         recipes = nil;
     }
         
-    //Create two arrays of recipe names and images:
+    //Create arrays of recipe names, images, instructions, and time:
     recipeTitles = [[NSMutableArray alloc] init];
     recipeImages = [[NSMutableArray alloc] init];
+    recipeTimes = [[NSMutableArray alloc] init];
+    recipeInstructions = [[NSMutableArray alloc] init];
     NSString *newRecipe;
-    NSString *newRecipeImageString;
-    UIImage *newRecipeImage = [[UIImage alloc] init];
+    NSString *newInstructions;
+    NSNumber *newTime;
+    NSString *newImageString;
+    UIImage *newImage = [[UIImage alloc] init];
     UIImage *none = [[UIImage alloc] init];
     none = [UIImage imageNamed:@"noImage.jpg"];
+    
     for (NSManagedObject *managedObject in recipes) {
+        //Add recipe title:
         newRecipe = [[managedObject valueForKey:@"title"] capitalizedString];
         [recipeTitles addObject:newRecipe];
-        newRecipeImageString = [managedObject valueForKey:@"image"];
-        if (newRecipeImageString != nil) {
-            newRecipeImage = [UIImage imageNamed:newRecipeImageString];
-            [recipeImages addObject:newRecipeImage];
+        
+        //Add recipe instructions:
+        newInstructions = [managedObject valueForKey:@"instructions"];
+        [recipeInstructions addObject:newInstructions];
+        
+        //Add recipe cook time:
+        newTime = [managedObject valueForKey:@"cookTime"];
+        [recipeTimes addObject:newTime];
+        
+        //Add recipe image:
+        newImageString = [managedObject valueForKey:@"image"];
+        if (newImageString != nil) {
+            newImage = [UIImage imageNamed:newImageString];
+            [recipeImages addObject:newImage];
         }
         else {
             [recipeImages addObject:none];
@@ -169,7 +191,63 @@ NSMutableArray *recipeImages;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TO DO: NEED TO IMPLEMENT THIS METHOD
+    indexOfSelectedRow = indexPath.row;
+    
+    //Perform fetch to determine all necessary ingredients for selected recipe
+    //Initialize Fetch Requests
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
+    
+    //Add Sort Descriptors
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    //Add Predicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY isIn.title == %@)", [recipeTitles objectAtIndex:indexOfSelectedRow]];
+    [fetchRequest setPredicate:predicate];
+    
+    //Initialize Fetched Results Controllers
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    //Configure Fetched Results Controllers
+    [self.fetchedResultsController setDelegate:self];
+
+    //Perform Fetches
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if(error){
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+        
+    ingredients = [self.fetchedResultsController fetchedObjects];
+    
+    NSString *newIngredient;
+    
+    for (NSManagedObject *managedObject in ingredients) {
+        //Add ingredient name:
+        newIngredient = [[managedObject valueForKey:@"name"] capitalizedString];
+        [ingredientNames addObject:newIngredient];
+    }
+
+}
+
+//The following method sends necessary information (title, time, ingredients, image, instructions) to the Individual Recipe View Controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"toRecipePage"]){
+        
+        ////   BEWARE: this method seems to be accessed before 'didSelectRowAtIndexPath' so values being passed are not correct. Need to figure out a way to fix this!!!!! //////
+        /*
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        IndividualRecipeViewController *controller = (IndividualRecipeViewController *)navController;
+        controller.title = [recipeTitles objectAtIndex:indexOfSelectedRow];
+        controller.time = [recipeTimes objectAtIndex:indexOfSelectedRow];
+        controller.instructions = [recipeInstructions objectAtIndex:indexOfSelectedRow];
+        controller.image = [recipeImages objectAtIndex:indexOfSelectedRow];
+        controller.ingredients = ingredientNames;
+        */ 
+
+    }
 }
 
 

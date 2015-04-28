@@ -166,7 +166,7 @@
                                 <connections>
                                     <outlet property="recipeImage" destination="tbb-La-OCK" id="QHn-Wl-dUB"/>
                                     <outlet property="recipeName" destination="1zJ-uL-iAM" id="lct-gm-VAZ"/>
-                                    <segue destination="Fwv-BN-L08" kind="show" id="oas-cM-kIe"/>
+                                    <segue destination="Fwv-BN-L08" kind="show" identifier="toRecipePage" id="oas-cM-kIe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="1251" y="170"/>
         </scene>
-        <!--View Controller-->
+        <!--Individual Recipe View Controller-->
         <scene sceneID="qPO-8S-xwK">
             <objects>
-                <viewController id="Fwv-BN-L08" sceneMemberID="viewController">
+                <viewController id="Fwv-BN-L08" customClass="IndividualRecipeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="idC-KZ-aVA"/>
                         <viewControllerLayoutGuide type="bottom" id="QSM-4P-aob"/>
@@ -213,7 +213,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sxv-75-0fv">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sxv-75-0fv">
                                 <rect key="frame" x="16" y="134" width="568" height="201"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="201" id="usJ-Cs-viR"/>
@@ -235,6 +235,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HNS-XF-1eD" firstAttribute="top" secondItem="cEY-AE-WOe" secondAttribute="top" constant="72" id="0My-y9-N1m"/>
+                            <constraint firstItem="sxv-75-0fv" firstAttribute="leading" secondItem="cEY-AE-WOe" secondAttribute="leading" constant="16" id="48k-Nw-GZA"/>
+                            <constraint firstAttribute="trailing" secondItem="sxv-75-0fv" secondAttribute="trailing" constant="16" id="66j-o5-aF7"/>
                             <constraint firstAttribute="bottom" secondItem="CHY-YQ-74X" secondAttribute="bottom" constant="8" id="AFU-qA-ECz"/>
                             <constraint firstItem="CHY-YQ-74X" firstAttribute="leading" secondItem="cEY-AE-WOe" secondAttribute="leading" constant="16" id="OaX-F7-mIh"/>
                             <constraint firstItem="clP-JO-5C7" firstAttribute="leading" secondItem="cEY-AE-WOe" secondAttribute="leading" constant="16" id="QZY-Gg-fBP"/>

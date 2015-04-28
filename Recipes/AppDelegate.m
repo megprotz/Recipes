@@ -43,7 +43,7 @@
     [vanillaCupcake setValue:@"Vanilla Cupcake" forKey:@"title"];
     [vanillaCupcake setValue:@35 forKey:@"cookTime"];
     [vanillaCupcake setValue:@"vanillaCupcake.jpg" forKey:@"image"];
-    [vanillaCupcake setValue:@"Mix butter and sugar until light and fluffy. Stir in eggs one at a time. Stir in vanill and flour until just mixed. Bake at 350 18 to 20 min." forKey:@"instructions"];
+    [vanillaCupcake setValue:@"Mix butter and sugar until light and fluffy. Stir in eggs one at a time. Stir in vanilla and flour until just mixed. Bake at 350 18 to 20 min." forKey:@"instructions"];
     
     //Create Ingredient Objects
     NSEntityDescription *ingredientEntity = [NSEntityDescription entityForName:@"Ingredient" inManagedObjectContext:self.managedObjectContext];

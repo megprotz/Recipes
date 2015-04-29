@@ -34,10 +34,6 @@ NSMutableArray *allSelectedIngredients;
     self.categoryTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.ingredientTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    //This will set table separator color:
-    [self.categoryTable setSeparatorColor:[UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:1.0]];
-    [self.ingredientTable setSeparatorColor:[UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:1.0]];
-
     //The following line makes sure that the ingredient table loads in the correct view location.
     self.categoryTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
@@ -127,7 +123,7 @@ NSMutableArray *allSelectedIngredients;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *fontName = @"SFCartoonistHand";
-    CGFloat size = 25.0;
+    CGFloat size = 19.5;
     
     if (tableView==self.categoryTable) {
         
@@ -166,7 +162,7 @@ NSMutableArray *allSelectedIngredients;
             UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check_mark.png"]];
             cell.accessoryView = checkmark;
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
         }
         
         [cell.textLabel setFont:[UIFont fontWithName:fontName size:size]];

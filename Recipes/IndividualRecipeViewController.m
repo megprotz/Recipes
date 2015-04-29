@@ -34,6 +34,17 @@
     }
     
     recipeView.recipeIngredients.text = [NSString stringWithFormat:@"Necessary Ingredients: %@", allIngredientsList];
+    
+    //Set up visual aspects of cell:
+    recipeView.recipeTime.layer.masksToBounds = NO;
+    recipeView.recipeTime.layer.borderWidth=1.0f;
+    recipeView.recipeTime.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    recipeView.recipeTime.layer.cornerRadius = 10;
+    
+    recipeView.recipeInstructions.layer.masksToBounds = NO;
+    recipeView.recipeInstructions.layer.borderWidth=1.0f;
+    recipeView.recipeInstructions.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    recipeView.recipeInstructions.layer.cornerRadius = 10;
 }
 
 @end

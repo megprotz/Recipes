@@ -36,6 +36,9 @@ NSInteger indexOfSelectedRow;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
     
+    // This will remove extra separators from tableview
+    self.recipeTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     ingredientNames = [[NSMutableArray alloc] init];
     
     //Initialize Fetch Requests
@@ -173,7 +176,6 @@ NSInteger indexOfSelectedRow;
         tableView.scrollEnabled=NO;
         cell.recipeName.text = @"Sorry...No Recipes Found.";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //////  TO DO: Make sure that nothing is selected (does not follow segue) in this case!!!!!! /////////////
     }
     else{
         //Create your default cell with data..
@@ -188,12 +190,25 @@ NSInteger indexOfSelectedRow;
             }
         }
     }
+    UIView *customColorView = [[UIView alloc] init];
+    customColorView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5];
+    cell.selectedBackgroundView= customColorView;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //TO-DO: IMPLEMENT THIS METHOD
+}
+
+//Only perform a segue if recipes have been returned
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"toRecipePage"]) {
+        if ([recipes count]==0) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 //The following method sends necessary information (title, time, ingredients, image, instructions) to the Individual Recipe View Controller.

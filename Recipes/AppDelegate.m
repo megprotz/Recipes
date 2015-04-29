@@ -16,6 +16,10 @@
 
 @implementation AppDelegate
 
+-(void) customizeAppearance{
+    // Customize the title text for *all* UINavigationBars
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"SFCartoonistHand" size:20.0], NSFontAttributeName, nil]];
+}
 
 - (void)loadSampleData {
     //Below is code primarily from Bart Jacobs tutorial. Also adding basic/simple/trial info to Core Data
@@ -200,6 +204,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self customizeAppearance];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Ingredient"];
         NSError *fetchError = nil;
@@ -245,27 +250,6 @@
     
     //Configure Window
     [self.window setRootViewController:rootNavigationController];
-    
-    /*///////////////////////////////////////////////////////////////////////////////////
-    //Practice Fetching (to make sure it works) ***should remove this later***
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"FoodItem"];
-    ////////SORT DESCRIPTOR. THERE CAN BE AN OPTION ON APP TO SORT BY.../////////
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY needs.name == %@) AND (ANY needs.name == %@)", @"chocolate chips", @"flour"];
-    [fetchRequest setPredicate:predicate];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    NSError *fetchError = nil;
-    NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-    if(!fetchError){
-        for (NSManagedObject *managedObject in result) {
-            NSLog(@"%@", [managedObject valueForKey:@"title"]);
-        }
-    }
-    else{
-        NSLog(@"Error fetching data.");
-        NSLog(@"%@, %@", fetchError, fetchError.localizedDescription);
-    }
-    //////////////////////////////////////////////////////////////////////////////////*/
     
     return YES;
 }

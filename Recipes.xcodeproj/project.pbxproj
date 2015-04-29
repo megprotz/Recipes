@@ -15,6 +15,8 @@
 		2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937C1ACB0CF7005D7144 /* Images.xcassets */; };
 		2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B0B937E1ACB0CF7005D7144 /* LaunchScreen.xib */; };
 		2B0B938C1ACB0CF7005D7144 /* RecipesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */; };
+		2B0E365C1AF0773100933224 /* SF Cartoonist Hand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B0E365B1AF0773100933224 /* SF Cartoonist Hand.ttf */; };
+		2B0E365F1AF087C200933224 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B0E365E1AF087C200933224 /* check_mark.png */; };
 		2B4D142C1AED87A300178D90 /* chocolateChipCookies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D142B1AED87A300178D90 /* chocolateChipCookies.jpg */; };
 		2B4D142F1AED91D900178D90 /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D142E1AED91D900178D90 /* noImage.jpg */; };
 		2B4D14311AED959C00178D90 /* vanillaCupcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */; };
@@ -51,6 +53,8 @@
 		2B0B93851ACB0CF7005D7144 /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0B938A1ACB0CF7005D7144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipesTests.m; sourceTree = "<group>"; };
+		2B0E365B1AF0773100933224 /* SF Cartoonist Hand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF Cartoonist Hand.ttf"; path = "../../../Downloads/SF Cartoonist Hand v2.0/SF Cartoonist Hand.ttf"; sourceTree = "<group>"; };
+		2B0E365E1AF087C200933224 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = ../../../Downloads/check_mark.png; sourceTree = "<group>"; };
 		2B4D142B1AED87A300178D90 /* chocolateChipCookies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chocolateChipCookies.jpg; path = "../../../Downloads/Recipe imgs/chocolateChipCookies.jpg"; sourceTree = "<group>"; };
 		2B4D142E1AED91D900178D90 /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = noImage.jpg; path = "../../../Downloads/Recipe imgs/noImage.jpg"; sourceTree = "<group>"; };
 		2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = vanillaCupcake.jpg; path = "../../../Downloads/Recipe imgs/vanillaCupcake.jpg"; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				2B9925821AEEF9870092387C /* IndividualRecipeViewController.h */,
+				2B0B93791ACB0CF7005D7144 /* Main.storyboard */,
 				2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */,
 				2B0B93701ACB0CF7005D7144 /* AppDelegate.h */,
 				2B0B93711ACB0CF7005D7144 /* AppDelegate.m */,
@@ -114,7 +119,6 @@
 				2B0B93771ACB0CF7005D7144 /* ViewController.m */,
 				2BB3687B1AE4448400A35DE0 /* Cell.h */,
 				2BB3687C1AE4448400A35DE0 /* Cell.m */,
-				2B0B93791ACB0CF7005D7144 /* Main.storyboard */,
 				2B53E3D31AEFD695002550FD /* IndividualRecipeView.h */,
 				2B53E3D41AEFD695002550FD /* IndividualRecipeView.m */,
 				2BE8B0061AE96206006D09DF /* RecipeTableViewController.h */,
@@ -124,6 +128,7 @@
 				2B0B937C1ACB0CF7005D7144 /* Images.xcassets */,
 				2B0B937E1ACB0CF7005D7144 /* LaunchScreen.xib */,
 				2B0B93731ACB0CF7005D7144 /* Recipes.xcdatamodeld */,
+				2B0E365D1AF0773B00933224 /* Fonts */,
 				2B4D142D1AED87CE00178D90 /* Images */,
 				2B0B936C1ACB0CF7005D7144 /* Supporting Files */,
 			);
@@ -156,9 +161,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2B0E365D1AF0773B00933224 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B0E365B1AF0773100933224 /* SF Cartoonist Hand.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		2B4D142D1AED87CE00178D90 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B0E365E1AF087C200933224 /* check_mark.png */,
 				2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */,
 				2B4D14321AED95FE00178D90 /* chocolateCake.jpg */,
 				2B4D142E1AED91D900178D90 /* noImage.jpg */,
@@ -251,8 +265,10 @@
 				2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */,
 				2B4D14331AED95FE00178D90 /* chocolateCake.jpg in Resources */,
 				2B4D14311AED959C00178D90 /* vanillaCupcake.jpg in Resources */,
+				2B0E365C1AF0773100933224 /* SF Cartoonist Hand.ttf in Resources */,
 				2B4D142F1AED91D900178D90 /* noImage.jpg in Resources */,
 				2B4D142C1AED87A300178D90 /* chocolateChipCookies.jpg in Resources */,
+				2B0E365F1AF087C200933224 /* check_mark.png in Resources */,
 				2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@
 #import "Cell.h"
 #import <UIKit/UIKit.h>
 #import "RecipeTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController () <NSFetchedResultsControllerDelegate>
 
@@ -29,14 +30,14 @@ NSMutableArray *allSelectedIngredients;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[self.collectionView registerClass:[Cell class] forCellWithReuseIdentifier:@"MyCell"];
+    // This will remove extra separators from tableview
+    self.categoryTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.ingredientTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    
-    // get a cell as template for sizing
-    //_sizingCell = [[cellNib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-    
-    //sizingCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:nil];
-    
+    //This will set table separator color:
+    [self.categoryTable setSeparatorColor:[UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:1.0]];
+    [self.ingredientTable setSeparatorColor:[UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:1.0]];
+
     //The following line makes sure that the ingredient table loads in the correct view location.
     self.categoryTable.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     
@@ -125,6 +126,9 @@ NSMutableArray *allSelectedIngredients;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *fontName = @"SFCartoonistHand";
+    CGFloat size = 25.0;
+    
     if (tableView==self.categoryTable) {
         
         static NSString *simpleTableIdentifier = @"SimpleTableItem";
@@ -136,6 +140,12 @@ NSMutableArray *allSelectedIngredients;
         }
         
         cell.textLabel.text = [[self calculateList:result forTable:@"category"] objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setFont:[UIFont fontWithName:fontName size:size]];
+        
+        UIView *customColorView = [[UIView alloc] init];
+        customColorView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5];
+        cell.selectedBackgroundView= customColorView;
         
         return cell;
     }
@@ -153,15 +163,23 @@ NSMutableArray *allSelectedIngredients;
         cell.textLabel.text = [[self calculateList:ingredientResult forTable:@"name"] objectAtIndex:indexPath.row];
         
         if ([self isSelected:[[self calculateList:ingredientResult forTable:@"name"] objectAtIndex:indexPath.row]]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check_mark.png"]];
+            cell.accessoryView = checkmark;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        
+        [cell.textLabel setFont:[UIFont fontWithName:fontName size:size]];
+        
+        UIView *customColorView = [[UIView alloc] init];
+        customColorView.backgroundColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5];
+        cell.selectedBackgroundView= customColorView;
         
         return cell;
 
     }
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView==self.categoryTable) {
@@ -337,7 +355,11 @@ NSMutableArray *allSelectedIngredients;
     cell.ingredientLabel.text = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
     [cell.deleteButton addTarget:self action:@selector(collectionViewCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    //[self collectionView:collectionView layout:collectionView.self.collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    //Set up visual aspects of cell:
+    cell.layer.masksToBounds = NO;
+    cell.layer.borderWidth=1.0f;
+    cell.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    cell.layer.cornerRadius = 20;
     
     return cell;
 }
@@ -359,7 +381,11 @@ NSMutableArray *allSelectedIngredients;
 {
     NSString *ingredient = [allSelectedIngredients objectAtIndex:indexPath.row+(indexPath.section*4)];
   
-    CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17.0]}];
+    NSString *fontName = @"SFCartoonistHand";
+    
+    CGFloat size = 30.0;
+    
+    CGSize labelsize = [ingredient sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:fontName size:size]}];
     
     labelsize = CGSizeMake(labelsize.width+60, labelsize.height+25);
 

@@ -37,7 +37,7 @@
     [ccCookie setValue:@"Chocolate Chip Cookies" forKey:@"title"];
     [ccCookie setValue:@30 forKey:@"cookTime"];
     [ccCookie setValue:@"chocolateChipCookies.jpg" forKey:@"image"];
-    [ccCookie setValue:@"Combine dry ingredients. Set aside. Combine butter, egg, sugar, vanilla. Add in flour mixture and chocolate chips. Bake at 325 for 7.5 min." forKey:@"instructions"];
+    [ccCookie setValue:@"Preheat oven to 375 degrees Fareinheit. \n\n Combine 2 1/4 c flour, 1 tsp baking soda, and 1 tsp salt in a small bowl. Beat 2 sticks butter, 3/4 c granulated sugar, and 1 tsp vanilla in a large mixer bowl until creamy. Add 2 eggs, one at a time, beating well after each addition. Gradually beat in flour mixture. Stir in 2 c chocolate chips. Drop by rounded tablespoon onto ungreased baking sheets. \n\n Bake for 9 to 11 minutes or until golden brown. Cool on baking sheets for 2 minutes; remove to wire racks to cool completely." forKey:@"instructions"];
     NSManagedObject *cCake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [cCake setValue:@"Chocolate Cake" forKey:@"title"];
     [cCake setValue:@60 forKey:@"cookTime"];
@@ -49,12 +49,28 @@
     [vanillaCupcake setValue:@"vanillaCupcake.jpg" forKey:@"image"];
     [vanillaCupcake setValue:@"Mix butter and sugar until light and fluffy. Stir in eggs one at a time. Stir in vanilla and flour until just mixed. Bake at 350 18 to 20 min." forKey:@"instructions"];
     
+    /*
+    //Create Measurement Objects
+    NSEntityDescription *measurementEntity = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *oneCup = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [oneCup setValue:@"1 c" forKey:@"amount"];
+    NSManagedObject *threeQuarterCup = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [threeQuarterCup setValue:@"3/4 c" forKey:@"amount"];
+    NSManagedObject *oneTsp = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [oneTsp setValue:@"1 tsp" forKey:@"amount"];
+    NSManagedObject *twoAndOneQuarter = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [twoAndOneQuarter setValue:@"2 1/4 c" forKey:@"amount"];
+    NSManagedObject *two = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [two setValue:@"2" forKey:@"amount"];
+    NSManagedObject *twoCup = [[NSManagedObject alloc] initWithEntity:measurementEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [twoCup setValue:@"2 c" forKey:@"amount"];
+     */
+    
     //Create Ingredient Objects
     NSEntityDescription *ingredientEntity = [NSEntityDescription entityForName:@"Ingredient" inManagedObjectContext:self.managedObjectContext];
     NSManagedObject *flour = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [flour setValue:@"flour" forKey:@"name"];
     [flour setValue:@"dry" forKey:@"category"];
-    [flour setValue:@YES forKey:@"selected"];
     NSManagedObject *sugar = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [sugar setValue:@"sugar" forKey:@"name"];
     [sugar setValue:@"dry" forKey:@"category"];
@@ -102,18 +118,32 @@
     [cinnamon setValue:@"spice" forKey:@"category"];
     NSManagedObject *carraway = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [carraway setValue:@"carraway seeds" forKey:@"name"];
-    [cinnamon setValue:@"spice" forKey:@"category"];
+    [carraway setValue:@"spice" forKey:@"category"];
     NSManagedObject *buttermilk = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [buttermilk setValue:@"buttermilk" forKey:@"name"];
     [buttermilk setValue:@"dairy" forKey:@"category"];
     
-    //Create Relationships
+    //Create ingredient Relationships
     [ccCookie setValue:[NSSet setWithObjects:cChips, salt, bakingSoda, flour, vanilla, eggs, brownSugar, sugar, butter, nil] forKey:@"needs"];
     
     [cCake setValue:[NSSet setWithObjects:water, vanilla, vegetableOil, milk, eggs, salt, bakingSoda, bakingPowder, cocoa, flour, sugar, nil] forKey:@"needs"];
     
     [vanillaCupcake setValue:[NSSet setWithObjects:vanilla, eggs, selfRisingFlour, sugar, butter, nil] forKey:@"needs"];
     
+    /*
+    //Create measurement relationships
+    
+    [ccCookie setValue:[NSSet setWithObjects:twoAndOneQuarter, oneCup, oneTsp, threeQuarterCup, two, twoCup, nil] forKey:@"hasAmount"];
+    [flour setValue:[NSSet setWithObjects:twoAndOneQuarter, nil] forKey:@"needsAmount"];
+    [bakingSoda setValue:[NSSet setWithObjects:oneTsp, nil] forKey:@"needsAmount"];
+    [salt setValue:[NSSet setWithObjects:oneTsp, nil] forKey:@"needsAmount"];
+    [butter setValue:[NSSet setWithObjects:oneCup, nil] forKey:@"needsAmount"];
+    [sugar setValue:[NSSet setWithObjects:threeQuarterCup, nil] forKey:@"needsAmount"];
+    [brownSugar setValue:[NSSet setWithObjects:threeQuarterCup, nil] forKey:@"needsAmount"];
+    [vanilla setValue:[NSSet setWithObjects:oneTsp, nil] forKey:@"needsAmount"];
+    [eggs setValue:[NSSet setWithObjects:two, nil] forKey:@"needsAmount"];
+    [cChips setValue:[NSSet setWithObjects:twoCup, nil] forKey:@"needsAmount"];
+    */
     
     //Save everything
     NSError *error = nil;
@@ -201,6 +231,32 @@
         NSLog(@"Unable to save managed object context.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
+    /*
+    if (![oneTsp.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![oneCup.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![twoCup.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![two.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![twoAndOneQuarter.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![threeQuarterCup.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+     */
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -123,7 +123,7 @@ NSMutableArray *allSelectedIngredients;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *fontName = @"SFCartoonistHand";
-    CGFloat size = 19.5;
+    CGFloat size = 30;
     
     if (tableView==self.categoryTable) {
         
@@ -174,6 +174,11 @@ NSMutableArray *allSelectedIngredients;
         return cell;
 
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -10,14 +10,10 @@
 
 @interface IndividualRecipeView : UIView
 
-@property (weak, nonatomic) IBOutlet UILabel *recipeTitle;
-
 @property (weak, nonatomic) IBOutlet UIImageView *recipeImage;
-
+@property (weak, nonatomic) IBOutlet UILabel *recipeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *recipeTime;
-
 @property (weak, nonatomic) IBOutlet UILabel *recipeIngredients;
-
 @property (weak, nonatomic) IBOutlet UILabel *recipeInstructions;
 
 @end

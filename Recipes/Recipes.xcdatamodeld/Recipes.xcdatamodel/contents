@@ -14,7 +14,7 @@
         <relationship name="isIn" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="FoodItem" inverseName="needs" inverseEntity="FoodItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FoodItem" positionX="-333" positionY="18" width="128" height="120"/>
-        <element name="Ingredient" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="FoodItem" positionX="-531" positionY="9" width="128" height="118"/>
+        <element name="Ingredient" positionX="124" positionY="44" width="128" height="103"/>
     </elements>
 </model>

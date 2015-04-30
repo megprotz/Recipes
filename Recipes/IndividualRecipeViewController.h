@@ -15,5 +15,7 @@
 @property(nonatomic) NSArray *ingredients;
 @property(nonatomic) NSString *instructions;
 @property(nonatomic) UIImage *image;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ingredientHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *instructionsHeight;
 
 @end

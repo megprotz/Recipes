@@ -8,7 +8,7 @@
 
 #import "RecipeLabel.h"
 
-@implementation RecipeLabel
+@implementation RecipeLabel 
 
 - (void)drawTextInRect:(CGRect)rect {
     UIEdgeInsets insets = {0, 8, 0, 8};

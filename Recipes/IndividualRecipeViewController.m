@@ -21,13 +21,14 @@
     recipeView.recipeTitle.text = self.nameOfRecipe;
     [recipeView.recipeTitle sizeToFit];
     
-    recipeView.recipeTime.text = [NSString stringWithFormat: @"Total Time: %@ minutes", self.time.stringValue];
+    recipeView.recipeTime.text = [NSString stringWithFormat: @"TOTAL TIME: %@ minutes", self.time.stringValue];
     [recipeView.recipeTime sizeToFit];
-    RecipeLabel *recipeLabel = (RecipeLabel*)recipeView.recipeTime;
+    //RecipeLabel *recipeLabel = (RecipeLabel*)recipeView.recipeTime;
     //[recipeLabel boldSubstring:@"Total Time:"];
     
-    recipeView.recipeInstructions.text = [NSString stringWithFormat:@"Directions: \n %@", self.instructions];
+    recipeView.recipeInstructions.text = [NSString stringWithFormat:@"DIRECTIONS: \n %@", self.instructions];
     [recipeView.recipeInstructions sizeToFit];
+    //[recipeView.recipeInstructions setContentSize:CGSizeMake(recipeView.frame.size.width, recipeView.frame.size.height)];
     
     recipeView.recipeImage.contentMode = UIViewContentModeScaleAspectFit;
     recipeView.recipeImage.image = self.image;
@@ -42,7 +43,7 @@
         }
     }
     
-    recipeView.recipeIngredients.text = [NSString stringWithFormat:@"Necessary Ingredients:\n %@", allIngredientsList];
+    recipeView.recipeIngredients.text = [NSString stringWithFormat:@"NECESSARY INGREDIENTS:\n %@", allIngredientsList];
     [recipeView.recipeIngredients sizeToFit];
     
     //Set up visual aspects of cell:
@@ -51,12 +52,17 @@
     recipeView.recipeTime.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
     
     recipeView.recipeIngredients.layer.masksToBounds = NO;
-    recipeView.recipeIngredients.layer.borderWidth=2.0f;
-    recipeView.recipeIngredients.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
+    recipeView.scrollRecipeIngredients.layer.borderWidth=2.0f;
+    recipeView.scrollRecipeIngredients.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
     
     recipeView.recipeInstructions.layer.masksToBounds = NO;
-    recipeView.recipeInstructions.layer.borderWidth=2.0f;
-    recipeView.recipeInstructions.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
+    recipeView.scrollRecipeInstructions.layer.borderWidth=2.0f;
+    recipeView.scrollRecipeInstructions.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
+    
+    self.ingredientHeight.constant = [recipeView.recipeIngredients sizeThatFits:CGSizeMake(recipeView.recipeIngredients.frame.size.width, CGFLOAT_MAX)].height;
+    self.instructionsHeight.constant = [recipeView.recipeIngredients sizeThatFits:CGSizeMake(recipeView.recipeIngredients.frame.size.width, CGFLOAT_MAX)].height;
+
+
 }
 
 @end

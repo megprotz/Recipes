@@ -13,7 +13,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *recipeImage;
 @property (weak, nonatomic) IBOutlet UILabel *recipeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *recipeTime;
-@property (weak, nonatomic) IBOutlet UILabel *recipeIngredients;
-@property (weak, nonatomic) IBOutlet UILabel *recipeInstructions;
+@property (weak, nonatomic) IBOutlet UITextView *recipeIngredients;
+@property (weak, nonatomic) IBOutlet UITextView *recipeInstructions;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollRecipeIngredients;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollRecipeInstructions;
 
 @end

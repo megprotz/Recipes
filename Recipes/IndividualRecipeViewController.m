@@ -28,7 +28,7 @@
     
     recipeView.recipeInstructions.text = [NSString stringWithFormat:@"DIRECTIONS: \n %@", self.instructions];
     [recipeView.recipeInstructions sizeToFit];
-    //[recipeView.recipeInstructions setContentSize:CGSizeMake(recipeView.frame.size.width, recipeView.frame.size.height)];
+    recipeView.recipeInstructions.contentInset=UIEdgeInsetsMake(0, 0, 0, 0);
     
     recipeView.recipeImage.contentMode = UIViewContentModeScaleAspectFit;
     recipeView.recipeImage.image = self.image;
@@ -60,9 +60,10 @@
     recipeView.scrollRecipeInstructions.layer.borderColor = [UIColor colorWithRed:0.4 green:0.4 blue:1.0 alpha:0.5].CGColor;
     
     self.ingredientHeight.constant = [recipeView.recipeIngredients sizeThatFits:CGSizeMake(recipeView.recipeIngredients.frame.size.width, CGFLOAT_MAX)].height;
-    self.instructionsHeight.constant = [recipeView.recipeIngredients sizeThatFits:CGSizeMake(recipeView.recipeIngredients.frame.size.width, CGFLOAT_MAX)].height;
+    self.instructionsHeight.constant = [recipeView.recipeInstructions sizeThatFits:CGSizeMake(recipeView.recipeInstructions.frame.size.width, CGFLOAT_MAX)].height;
 
 
 }
+
 
 @end

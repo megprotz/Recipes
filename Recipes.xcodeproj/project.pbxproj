@@ -22,6 +22,17 @@
 		2B4D14311AED959C00178D90 /* vanillaCupcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */; };
 		2B4D14331AED95FE00178D90 /* chocolateCake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D14321AED95FE00178D90 /* chocolateCake.jpg */; };
 		2B53E3D51AEFD695002550FD /* IndividualRecipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B53E3D41AEFD695002550FD /* IndividualRecipeView.m */; };
+		2B8D88EB1AF2F97900A9627A /* RecipeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8D88EA1AF2F97900A9627A /* RecipeScrollView.m */; };
+		2B8D88ED1AF3014200A9627A /* chocolateIcing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88EC1AF3014200A9627A /* chocolateIcing.jpg */; };
+		2B8D88EF1AF305A100A9627A /* cheesecakeBrownie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88EE1AF305A100A9627A /* cheesecakeBrownie.jpg */; };
+		2B8D88F11AF307E700A9627A /* popTarts.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88F01AF307E700A9627A /* popTarts.jpg */; };
+		2B8D88F31AF30A3000A9627A /* caramelApplePie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88F21AF30A3000A9627A /* caramelApplePie.jpg */; };
+		2B8D88F51AF30C2800A9627A /* blueberryPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88F41AF30C2800A9627A /* blueberryPie.jpg */; };
+		2B8D88F71AF30D8600A9627A /* strawberryPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88F61AF30D8600A9627A /* strawberryPie.jpg */; };
+		2B8D88F91AF30F4A00A9627A /* pumpkinPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88F81AF30F4A00A9627A /* pumpkinPie.jpg */; };
+		2B8D88FB1AF3108700A9627A /* peachBlueberryPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88FA1AF3108700A9627A /* peachBlueberryPie.jpg */; };
+		2B8D88FD1AF312AA00A9627A /* lemonCookie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88FC1AF312AA00A9627A /* lemonCookie.jpg */; };
+		2B8D88FF1AF3142900A9627A /* peanutButterCookie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */; };
 		2B9925841AEEF9870092387C /* IndividualRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */; };
 		2BB1A0991AF1C92300D3DE5E /* RecipeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1A0981AF1C92300D3DE5E /* RecipeLabel.m */; };
 		2BB1A09B1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BB1A09A1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf */; };
@@ -64,6 +75,18 @@
 		2B4D14321AED95FE00178D90 /* chocolateCake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chocolateCake.jpg; path = "../../../Downloads/Recipe imgs/chocolateCake.jpg"; sourceTree = "<group>"; };
 		2B53E3D31AEFD695002550FD /* IndividualRecipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualRecipeView.h; sourceTree = "<group>"; };
 		2B53E3D41AEFD695002550FD /* IndividualRecipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualRecipeView.m; sourceTree = "<group>"; };
+		2B8D88E91AF2F97900A9627A /* RecipeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeScrollView.h; sourceTree = "<group>"; };
+		2B8D88EA1AF2F97900A9627A /* RecipeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeScrollView.m; sourceTree = "<group>"; };
+		2B8D88EC1AF3014200A9627A /* chocolateIcing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chocolateIcing.jpg; path = ../../../Downloads/chocolateIcing.jpg; sourceTree = "<group>"; };
+		2B8D88EE1AF305A100A9627A /* cheesecakeBrownie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cheesecakeBrownie.jpg; path = ../../../Downloads/cheesecakeBrownie.jpg; sourceTree = "<group>"; };
+		2B8D88F01AF307E700A9627A /* popTarts.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = popTarts.jpg; path = ../../../Downloads/popTarts.jpg; sourceTree = "<group>"; };
+		2B8D88F21AF30A3000A9627A /* caramelApplePie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = caramelApplePie.jpg; path = ../../../Downloads/caramelApplePie.jpg; sourceTree = "<group>"; };
+		2B8D88F41AF30C2800A9627A /* blueberryPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = blueberryPie.jpg; path = ../../../Downloads/blueberryPie.jpg; sourceTree = "<group>"; };
+		2B8D88F61AF30D8600A9627A /* strawberryPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = strawberryPie.jpg; path = ../../../Downloads/strawberryPie.jpg; sourceTree = "<group>"; };
+		2B8D88F81AF30F4A00A9627A /* pumpkinPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pumpkinPie.jpg; path = ../../../Downloads/pumpkinPie.jpg; sourceTree = "<group>"; };
+		2B8D88FA1AF3108700A9627A /* peachBlueberryPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = peachBlueberryPie.jpg; path = ../../../Downloads/peachBlueberryPie.jpg; sourceTree = "<group>"; };
+		2B8D88FC1AF312AA00A9627A /* lemonCookie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lemonCookie.jpg; path = ../../../Downloads/lemonCookie.jpg; sourceTree = "<group>"; };
+		2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = peanutButterCookie.jpg; path = ../../../Downloads/peanutButterCookie.jpg; sourceTree = "<group>"; };
 		2B9925821AEEF9870092387C /* IndividualRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualRecipeViewController.h; sourceTree = "<group>"; };
 		2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualRecipeViewController.m; sourceTree = "<group>"; };
 		2BB1A0971AF1C92300D3DE5E /* RecipeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeLabel.h; sourceTree = "<group>"; };
@@ -119,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				2B0B93791ACB0CF7005D7144 /* Main.storyboard */,
+				2B8D88E91AF2F97900A9627A /* RecipeScrollView.h */,
+				2B8D88EA1AF2F97900A9627A /* RecipeScrollView.m */,
 				2B9925821AEEF9870092387C /* IndividualRecipeViewController.h */,
 				2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */,
 				2BB1A0971AF1C92300D3DE5E /* RecipeLabel.h */,
@@ -185,6 +210,16 @@
 		2B4D142D1AED87CE00178D90 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */,
+				2B8D88FC1AF312AA00A9627A /* lemonCookie.jpg */,
+				2B8D88FA1AF3108700A9627A /* peachBlueberryPie.jpg */,
+				2B8D88F81AF30F4A00A9627A /* pumpkinPie.jpg */,
+				2B8D88F61AF30D8600A9627A /* strawberryPie.jpg */,
+				2B8D88F41AF30C2800A9627A /* blueberryPie.jpg */,
+				2B8D88F21AF30A3000A9627A /* caramelApplePie.jpg */,
+				2B8D88F01AF307E700A9627A /* popTarts.jpg */,
+				2B8D88EE1AF305A100A9627A /* cheesecakeBrownie.jpg */,
+				2B8D88EC1AF3014200A9627A /* chocolateIcing.jpg */,
 				2B0E365E1AF087C200933224 /* check_mark.png */,
 				2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */,
 				2B4D14321AED95FE00178D90 /* chocolateCake.jpg */,
@@ -274,16 +309,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B8D88F91AF30F4A00A9627A /* pumpkinPie.jpg in Resources */,
 				2B0B937B1ACB0CF7005D7144 /* Main.storyboard in Resources */,
+				2B8D88F11AF307E700A9627A /* popTarts.jpg in Resources */,
 				2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */,
+				2B8D88F71AF30D8600A9627A /* strawberryPie.jpg in Resources */,
+				2B8D88FB1AF3108700A9627A /* peachBlueberryPie.jpg in Resources */,
+				2B8D88FD1AF312AA00A9627A /* lemonCookie.jpg in Resources */,
 				2B4D14331AED95FE00178D90 /* chocolateCake.jpg in Resources */,
 				2B4D14311AED959C00178D90 /* vanillaCupcake.jpg in Resources */,
 				2B0E365C1AF0773100933224 /* SF Cartoonist Hand.ttf in Resources */,
 				2B4D142F1AED91D900178D90 /* noImage.jpg in Resources */,
+				2B8D88F31AF30A3000A9627A /* caramelApplePie.jpg in Resources */,
 				2B4D142C1AED87A300178D90 /* chocolateChipCookies.jpg in Resources */,
+				2B8D88F51AF30C2800A9627A /* blueberryPie.jpg in Resources */,
+				2B8D88FF1AF3142900A9627A /* peanutButterCookie.jpg in Resources */,
+				2B8D88ED1AF3014200A9627A /* chocolateIcing.jpg in Resources */,
 				2B0E365F1AF087C200933224 /* check_mark.png in Resources */,
 				2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */,
 				2BB1A09B1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf in Resources */,
+				2B8D88EF1AF305A100A9627A /* cheesecakeBrownie.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +357,7 @@
 				2B9925841AEEF9870092387C /* IndividualRecipeViewController.m in Sources */,
 				2B53E3D51AEFD695002550FD /* IndividualRecipeView.m in Sources */,
 				2B0B93751ACB0CF7005D7144 /* Recipes.xcdatamodeld in Sources */,
+				2B8D88EB1AF2F97900A9627A /* RecipeScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

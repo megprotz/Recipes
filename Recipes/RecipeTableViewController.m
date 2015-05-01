@@ -226,7 +226,7 @@ NSInteger indexOfSelectedRow;
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
         
         //Add Predicate
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY isIn.title == %@)", [recipeTitles objectAtIndex:indexPath.row]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(ANY isIn.title like[cd] %@)", [recipeTitles objectAtIndex:indexPath.row]];
         [fetchRequest setPredicate:predicate];
         
         //Initialize Fetched Results Controllers

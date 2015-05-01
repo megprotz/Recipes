@@ -17,6 +17,10 @@
 		2B0B938C1ACB0CF7005D7144 /* RecipesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */; };
 		2B0E365C1AF0773100933224 /* SF Cartoonist Hand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B0E365B1AF0773100933224 /* SF Cartoonist Hand.ttf */; };
 		2B0E365F1AF087C200933224 /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B0E365E1AF087C200933224 /* check_mark.png */; };
+		2B38421A1AF40BCF00D83B4C /* grasshopperMallowPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B3842191AF40BCF00D83B4C /* grasshopperMallowPie.jpg */; };
+		2B38421C1AF40DBD00D83B4C /* bananaMallowPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B38421B1AF40DBD00D83B4C /* bananaMallowPie.jpg */; };
+		2B38421E1AF40F0500D83B4C /* stripedDelight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B38421D1AF40F0500D83B4C /* stripedDelight.jpg */; };
+		2B3842201AF4112800D83B4C /* vanillaSnickerdoodles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B38421F1AF4112800D83B4C /* vanillaSnickerdoodles.jpg */; };
 		2B4D142C1AED87A300178D90 /* chocolateChipCookies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D142B1AED87A300178D90 /* chocolateChipCookies.jpg */; };
 		2B4D142F1AED91D900178D90 /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D142E1AED91D900178D90 /* noImage.jpg */; };
 		2B4D14311AED959C00178D90 /* vanillaCupcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */; };
@@ -34,6 +38,12 @@
 		2B8D88FD1AF312AA00A9627A /* lemonCookie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88FC1AF312AA00A9627A /* lemonCookie.jpg */; };
 		2B8D88FF1AF3142900A9627A /* peanutButterCookie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */; };
 		2B9925841AEEF9870092387C /* IndividualRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */; };
+		2BB0846A1AF3F703000C86CC /* peanutButterBananaCreamPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB084691AF3F703000C86CC /* peanutButterBananaCreamPie.jpg */; };
+		2BB0846C1AF3F997000C86CC /* coconutChocolateBar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB0846B1AF3F997000C86CC /* coconutChocolateBar.jpg */; };
+		2BB0846E1AF3FC50000C86CC /* strawberrySwirlCake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB0846D1AF3FC50000C86CC /* strawberrySwirlCake.jpg */; };
+		2BB084701AF3FF08000C86CC /* strawberryPretzelSquares.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB0846F1AF3FF08000C86CC /* strawberryPretzelSquares.jpg */; };
+		2BB084721AF400FD000C86CC /* peachShortcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB084711AF400FD000C86CC /* peachShortcake.jpg */; };
+		2BB084741AF402CD000C86CC /* cremeDeMentheBrownies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2BB084731AF402CD000C86CC /* cremeDeMentheBrownies.jpg */; };
 		2BB1A0991AF1C92300D3DE5E /* RecipeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB1A0981AF1C92300D3DE5E /* RecipeLabel.m */; };
 		2BB1A09B1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BB1A09A1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf */; };
 		2BB3687D1AE4448400A35DE0 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3687C1AE4448400A35DE0 /* Cell.m */; };
@@ -69,6 +79,10 @@
 		2B0B938B1ACB0CF7005D7144 /* RecipesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipesTests.m; sourceTree = "<group>"; };
 		2B0E365B1AF0773100933224 /* SF Cartoonist Hand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF Cartoonist Hand.ttf"; path = "../../../Downloads/SF Cartoonist Hand v2.0/SF Cartoonist Hand.ttf"; sourceTree = "<group>"; };
 		2B0E365E1AF087C200933224 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = ../../../Downloads/check_mark.png; sourceTree = "<group>"; };
+		2B3842191AF40BCF00D83B4C /* grasshopperMallowPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = grasshopperMallowPie.jpg; path = ../../../Downloads/grasshopperMallowPie.jpg; sourceTree = "<group>"; };
+		2B38421B1AF40DBD00D83B4C /* bananaMallowPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bananaMallowPie.jpg; path = ../../../Downloads/bananaMallowPie.jpg; sourceTree = "<group>"; };
+		2B38421D1AF40F0500D83B4C /* stripedDelight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = stripedDelight.jpg; path = ../../../Downloads/stripedDelight.jpg; sourceTree = "<group>"; };
+		2B38421F1AF4112800D83B4C /* vanillaSnickerdoodles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = vanillaSnickerdoodles.jpg; path = ../../../Downloads/vanillaSnickerdoodles.jpg; sourceTree = "<group>"; };
 		2B4D142B1AED87A300178D90 /* chocolateChipCookies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chocolateChipCookies.jpg; path = "../../../Downloads/Recipe imgs/chocolateChipCookies.jpg"; sourceTree = "<group>"; };
 		2B4D142E1AED91D900178D90 /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = noImage.jpg; path = "../../../Downloads/Recipe imgs/noImage.jpg"; sourceTree = "<group>"; };
 		2B4D14301AED959C00178D90 /* vanillaCupcake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = vanillaCupcake.jpg; path = "../../../Downloads/Recipe imgs/vanillaCupcake.jpg"; sourceTree = "<group>"; };
@@ -89,6 +103,12 @@
 		2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = peanutButterCookie.jpg; path = ../../../Downloads/peanutButterCookie.jpg; sourceTree = "<group>"; };
 		2B9925821AEEF9870092387C /* IndividualRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndividualRecipeViewController.h; sourceTree = "<group>"; };
 		2B9925831AEEF9870092387C /* IndividualRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndividualRecipeViewController.m; sourceTree = "<group>"; };
+		2BB084691AF3F703000C86CC /* peanutButterBananaCreamPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = peanutButterBananaCreamPie.jpg; path = ../../../Downloads/peanutButterBananaCreamPie.jpg; sourceTree = "<group>"; };
+		2BB0846B1AF3F997000C86CC /* coconutChocolateBar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coconutChocolateBar.jpg; path = ../../../Downloads/coconutChocolateBar.jpg; sourceTree = "<group>"; };
+		2BB0846D1AF3FC50000C86CC /* strawberrySwirlCake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = strawberrySwirlCake.jpg; path = ../../../Downloads/strawberrySwirlCake.jpg; sourceTree = "<group>"; };
+		2BB0846F1AF3FF08000C86CC /* strawberryPretzelSquares.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = strawberryPretzelSquares.jpg; path = ../../../Downloads/strawberryPretzelSquares.jpg; sourceTree = "<group>"; };
+		2BB084711AF400FD000C86CC /* peachShortcake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = peachShortcake.jpg; path = ../../../Downloads/peachShortcake.jpg; sourceTree = "<group>"; };
+		2BB084731AF402CD000C86CC /* cremeDeMentheBrownies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cremeDeMentheBrownies.jpg; path = ../../../Downloads/cremeDeMentheBrownies.jpg; sourceTree = "<group>"; };
 		2BB1A0971AF1C92300D3DE5E /* RecipeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeLabel.h; sourceTree = "<group>"; };
 		2BB1A0981AF1C92300D3DE5E /* RecipeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeLabel.m; sourceTree = "<group>"; };
 		2BB1A09A1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF Cartoonist Hand SC Bold.ttf"; path = "../../../Downloads/SF Cartoonist Hand v2.0/SF Cartoonist Hand SC Bold.ttf"; sourceTree = "<group>"; };
@@ -210,6 +230,16 @@
 		2B4D142D1AED87CE00178D90 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2B38421F1AF4112800D83B4C /* vanillaSnickerdoodles.jpg */,
+				2B38421D1AF40F0500D83B4C /* stripedDelight.jpg */,
+				2B38421B1AF40DBD00D83B4C /* bananaMallowPie.jpg */,
+				2B3842191AF40BCF00D83B4C /* grasshopperMallowPie.jpg */,
+				2BB084731AF402CD000C86CC /* cremeDeMentheBrownies.jpg */,
+				2BB084711AF400FD000C86CC /* peachShortcake.jpg */,
+				2BB0846F1AF3FF08000C86CC /* strawberryPretzelSquares.jpg */,
+				2BB0846D1AF3FC50000C86CC /* strawberrySwirlCake.jpg */,
+				2BB0846B1AF3F997000C86CC /* coconutChocolateBar.jpg */,
+				2BB084691AF3F703000C86CC /* peanutButterBananaCreamPie.jpg */,
 				2B8D88FE1AF3142900A9627A /* peanutButterCookie.jpg */,
 				2B8D88FC1AF312AA00A9627A /* lemonCookie.jpg */,
 				2B8D88FA1AF3108700A9627A /* peachBlueberryPie.jpg */,
@@ -310,9 +340,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8D88F91AF30F4A00A9627A /* pumpkinPie.jpg in Resources */,
+				2B38421C1AF40DBD00D83B4C /* bananaMallowPie.jpg in Resources */,
 				2B0B937B1ACB0CF7005D7144 /* Main.storyboard in Resources */,
+				2BB084721AF400FD000C86CC /* peachShortcake.jpg in Resources */,
+				2BB084741AF402CD000C86CC /* cremeDeMentheBrownies.jpg in Resources */,
+				2BB084701AF3FF08000C86CC /* strawberryPretzelSquares.jpg in Resources */,
+				2BB0846C1AF3F997000C86CC /* coconutChocolateBar.jpg in Resources */,
 				2B8D88F11AF307E700A9627A /* popTarts.jpg in Resources */,
+				2BB0846E1AF3FC50000C86CC /* strawberrySwirlCake.jpg in Resources */,
 				2B0B93801ACB0CF7005D7144 /* LaunchScreen.xib in Resources */,
+				2B38421E1AF40F0500D83B4C /* stripedDelight.jpg in Resources */,
 				2B8D88F71AF30D8600A9627A /* strawberryPie.jpg in Resources */,
 				2B8D88FB1AF3108700A9627A /* peachBlueberryPie.jpg in Resources */,
 				2B8D88FD1AF312AA00A9627A /* lemonCookie.jpg in Resources */,
@@ -325,9 +362,12 @@
 				2B8D88F51AF30C2800A9627A /* blueberryPie.jpg in Resources */,
 				2B8D88FF1AF3142900A9627A /* peanutButterCookie.jpg in Resources */,
 				2B8D88ED1AF3014200A9627A /* chocolateIcing.jpg in Resources */,
+				2BB0846A1AF3F703000C86CC /* peanutButterBananaCreamPie.jpg in Resources */,
 				2B0E365F1AF087C200933224 /* check_mark.png in Resources */,
 				2B0B937D1ACB0CF7005D7144 /* Images.xcassets in Resources */,
+				2B38421A1AF40BCF00D83B4C /* grasshopperMallowPie.jpg in Resources */,
 				2BB1A09B1AF1E7D900D3DE5E /* SF Cartoonist Hand SC Bold.ttf in Resources */,
+				2B3842201AF4112800D83B4C /* vanillaSnickerdoodles.jpg in Resources */,
 				2B8D88EF1AF305A100A9627A /* cheesecakeBrownie.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

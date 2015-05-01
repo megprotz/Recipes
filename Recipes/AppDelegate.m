@@ -111,6 +111,66 @@
     [peanutButterCookies setValue:@"peanutButterCookie.jpg" forKey:@"image"];
     [peanutButterCookies setValue:@"Preheat oven to 350 degrees Fahrenheit. Grease cookie sheets.\n\nIn a medium bowl, stir 2 c peanut butter and 2 c sugar together until smooth. Beat in 2 eggs, one at a time, then stir in 2 tsp baking soda, a pinch of salt, and 1 tsp vanilla. Roll dough into 1 inch balls and place them 2 inches apart onto the prepared cookie sheets. Press a criss-cross into the top using the back of a fork.\n\nBake for 8 to 10 minutes in the preheated oven. Allow cookies to cool on baking sheet for 5 minutes before removing to a wire rack to cool completely." forKey:@"instructions"];
     
+    NSManagedObject *peanutButterBananaCreamPie = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [peanutButterBananaCreamPie setValue:@"Peanut Butter-Chocolate Banana Cream Pie" forKey:@"title"];
+    [peanutButterBananaCreamPie setValue:@225 forKey:@"cookTime"];
+    [peanutButterBananaCreamPie setValue:@"peanutButterBananaCreamPie.jpg" forKey:@"image"];
+    [peanutButterBananaCreamPie setValue:@"Preheat oven to 350 degrees Fahrenheit.\n\nMix 35 finely crushed vanilla wafer crumbs and 1/4 c butter until blended; press onto bottom and up side of 9-inch pie plate. Bake 5 to 8 min. or until golden brown. Cool completely. Meanwhile, make chocolate curls from 1/2 oz. semisweet chocolate. Refrigerate.\n\nMicrowave 1.5 oz. chocolate and 1/2 c creamy peanut butter in microwaveable bowl on HIGH 1 min.; stir until chocolate is completely melted and mixture is well blended. Place 2 bananas (cut lengthwise in half, then crosswise into quarters) in crust; drizzle with melted chocolate.\n\nBeat 2 packages (3.4 oz each) of Vanilla pudding mixes and 2 c cold milk in large bowl with whisk for 2 min. Stir in 1 cup COOL WHIP. Spread over bananas; top with 1 c COOL WHIP.\n\nRefrigerate for 3 hours. Top with chocolate curls and 2 tbsp coarsely chopped peanuts just before serving." forKey:@"instructions"];
+    
+    NSManagedObject *layeredCoconutChocolateBars = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [layeredCoconutChocolateBars setValue:@"Layered Coconut-Chocolate Bars" forKey:@"title"];
+    [layeredCoconutChocolateBars setValue:@155 forKey:@"cookTime"];
+    [layeredCoconutChocolateBars setValue:@"coconutChocolateBar.jpg" forKey:@"image"];
+    [layeredCoconutChocolateBars setValue:@"Line 13x9-inch pan with foil, with ends of foil extending over sides; spray with cooking spray. Microwave 5 oz. semisweet chocolate and 1/2 c butter in medium microwaveable bowl on HIGH 2 min. or until butter is melted; stir until chocolate is completely melted and mixture is well blended. Stir in 1 1/2 c graham cracker crumbs, 2/3 c finely chopped, toasted walnuts and 1 c coconut; press onto bottom of prepared pan. Refrigerate 15 min.\n\nBeat 1 package (8 oz) cream cheese with mixer until creamy. Gradually add 1/2 c cold milk, beating well after each addition. Add 1 package (3.4 oz) dry vanilla pudding mix; beat 2 min. (Mixture will be stiff.) Stir in 1 c coconut; spread over chocolate layer in pan.\n\nMicrowave 1/4 c butter and 3 oz semisweet chocolate in microwaveable bowl 1 min. or until butter is melted; stir until chocolate is completely melted and mixture is well blended. Pour over pudding layer; tilt pan to evenly cover pudding layer. Sprinkle with 1 1/3 c coconut. Refrigerate 2 hours or until firm. Use foil handles to lift dessert from pan before cutting into bars." forKey:@"instructions"];
+    
+    NSManagedObject *strawberrySwirlCake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [strawberrySwirlCake setValue:@"Strawberry Swirl Cake" forKey:@"title"];
+    [strawberrySwirlCake setValue:@105 forKey:@"cookTime"];
+    [strawberrySwirlCake setValue:@"strawberrySwirlCake.jpg" forKey:@"image"];
+    [strawberrySwirlCake setValue:@"Heat oven to 350°F.\n\nGrease and flour 2 (8- or 9-inch) round pans. Prepare 1 package white cake batter as directed on package; pour half into medium bowl. Add 1 package (3 oz) dry strawberry gelatin mix; stir until blended. Spoon half the white batter and half the pink batter, side by side, into each prepared pan; swirl gently with spoon.\n\nBake 30 min. Cool cakes 30 min. in pans. Remove to wire racks; cool completely.\n\nMix 2/3 c sour cream and 2/3 c powdered sugar in medium bowl until blended. Gently stir in 1 tub (8 oz) COOL WHIP. Stack cake layers on plate, filling with 1 cup of the COOL WHIP mixture and 1 cup strawberries. Frost top and side with remaining COOL WHIP mixture. Top with 1/2 c strawberries." forKey:@"instructions"];
+    
+    NSManagedObject *strawberryPretzelSquares = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [strawberryPretzelSquares setValue:@"Strawberry Pretzel Squares" forKey:@"title"];
+    [strawberryPretzelSquares setValue:@300 forKey:@"cookTime"];
+    [strawberryPretzelSquares setValue:@"strawberryPretzelSquares.jpg" forKey:@"image"];
+    [strawberryPretzelSquares setValue:@"Mix 2 c finely crushed pretzel crumbs, 1/4 c sugar and 2/3 c butter; press onto bottom of 13x9-inch pan. Bake 10 min. Cool.\n\nBeat 1 1/2 package (12 oz total) cream cheese, 1/4 c sugar and 2 tbsp milk with mixer until blended. Stir in 1 c thawed COOL WHIP; spread over crust. Refrigerate until ready to use.\n\nAdd 2 c boiling water to 1 package (6 oz) gelatin mix in large bowl; stir 2 min. until completely dissolved. Stir in 1 1/2 c cold water. Refrigerate 1-1/2 hours or until thickened. Stir in 4 c fresh, sliced strawberries; spoon over cream cheese layer.\n\nRefrigerate 3 hours or until firm." forKey:@"instructions"];
+    
+    NSManagedObject *peachShortcake = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [peachShortcake setValue:@"Peach Shortcake" forKey:@"title"];
+    [peachShortcake setValue:@30 forKey:@"cookTime"];
+    [peachShortcake setValue:@"peachShortcake.jpg" forKey:@"image"];
+    [peachShortcake setValue:@"Mix 1 c flour, 2 Tbsp. sugar, 2 tsp baking powder and 1/2 tsp lemon zest in large bowl. Cut in 4 oz (1/2 package) cream cheese with 2 knives or pastry blender until mixture resembles coarse crumbs. Stir in 1/3 cup milk until mixture forms dough. \n\nUse floured hands to divide dough into 8 pieces; shape each into ball. Place, 3 inches apart, on baking sheet sprayed with cooking spray; flatten to 1/2-inch thickness. Brush tops lightly with 1 tbsp milk; sprinkle with 2 tsp. of sugar.\n\nBake 12 to 15 min. or until golden brown. Meanwhile, combine 3 large fresh peaches, sliced, 2 tbsp sugar and 1 1/2 tbsp lemon juice. \n\nCool shortcakes slightly; split in half. Fill with peach mixture and COOL WHIP just before serving." forKey:@"instructions"];
+    
+    NSManagedObject *cremeDeMentheBrownies = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cremeDeMentheBrownies setValue:@"Creme de Menthe Brownies" forKey:@"title"];
+    [cremeDeMentheBrownies setValue:@40 forKey:@"cookTime"];
+    [cremeDeMentheBrownies setValue:@"cremeDeMentheBrownies.jpg" forKey:@"image"];
+    [cremeDeMentheBrownies setValue:@"Preheat oven to 350 degree Fahrenheit. Grease a 9x9x2-inch baking pan and set aside. In a medium saucepan melt 1/2 c butter and 2 oz unsweetened chocolate over low heat. Stir in 1 c sugar, 2 eggs, and 1/4 tsp mint extract. Using a wooden spoon, beat lightly by hand just until combined. Stir in 2/3 c flour. Spread batter in prepared pan.\n\nBake for 20 minutes. Cool on a wire rack. Meanwhile for frosting, in a medium mixing bowl beat 1/4 cup butter or margarine until fluffy. Gradually add 1 cup sifted powdered sugar. Beat in 2 tbsp creme de menthe. Gradually beat in about 1/2 cup sifted powdered sugar until the frosting is easy to spread. Spread atop brownies. In a small, heavy saucepan melt 1 oz semisweet chocolate over low heat. Drizzle atop brownies. Let chocolate set, then cut into bars." forKey:@"instructions"];
+    
+    NSManagedObject *grasshopperMallowPie = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [grasshopperMallowPie setValue:@"Grasshopper Mallow Pie" forKey:@"title"];
+    [grasshopperMallowPie setValue:@250 forKey:@"cookTime"];
+    [grasshopperMallowPie setValue:@"grasshopperMallowPie.jpg" forKey:@"image"];
+    [grasshopperMallowPie setValue:@"Add 1/4 c green creme de menthe gradually to 1 jar (7 oz) marshmallow creme in large bowl, beating with electric mixer on medium speed until well blended. Gently stir in 2 c whipped cream.\n\nPour into 1 6 oz oreo pie crust.\n\nRefrigerate 4 to 6 hours or until chilled. Store leftover pie in refrigerator." forKey:@"instructions"];
+    
+    NSManagedObject *bananaMallowPie = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [bananaMallowPie setValue:@"Banana Mallow Pie" forKey:@"title"];
+    [bananaMallowPie setValue:@75 forKey:@"cookTime"];
+    [bananaMallowPie setValue:@"bananaMallowPie.jpg" forKey:@"image"];
+    [bananaMallowPie setValue:@"Beat 1 package (3.4 oz) vanilla pudding mix and 1 3/4 c cold milk in large bowl with whisk 2 min. Let stand 5 min. Stir in 2 c mini marshmallows and 1 c thawed COOL WHIP.\n\nPlace 2 bananas, sliced, in 1 ready to use 6 oz graham cracker pie crust; cover with pudding mixture.\n\nRegrigerate 1 hour or until firm." forKey:@"instructions"];
+    
+    NSManagedObject *stripedDelight = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [stripedDelight setValue:@"Striped Delight" forKey:@"title"];
+    [stripedDelight setValue:@280 forKey:@"cookTime"];
+    [stripedDelight setValue:@"stripedDelight.jpg" forKey:@"image"];
+    [stripedDelight setValue:@"Crush 35 oreo cookies until fine crumbs form. Transfer to medium bowl; mix in 6 tbsp melted butter. Press onto bottom of 13x9-inch dish. Refrigerate until ready to use.\n\nWhisk 1 package (8 oz) cream cheese, 1/4 c sugar and 2 Tbsp. milk in medium bowl until blended. Stir in 1-1/4 cups COOL WHIP; spread over crust.\n\nBeat 2 packages (3.9 oz each) chocolate pudding mixes and 3-1/4 cups milk with whisk 2 min.; pour over cream cheese layer. Let stand 5 min. or until thickened; cover with 1/4 c COOL WHIP. Refrigerate 4 hours." forKey:@"instructions"];
+    
+    NSManagedObject *vanillaSnickerdoodles = [[NSManagedObject alloc] initWithEntity:foodEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vanillaSnickerdoodles setValue:@"Vanilla Snickerdoodles" forKey:@"title"];
+    [vanillaSnickerdoodles setValue:@32 forKey:@"cookTime"];
+    [vanillaSnickerdoodles setValue:@"vanillaSnickerdoodles.jpg" forKey:@"image"];
+    [vanillaSnickerdoodles setValue:@"Heat oven to 350°F.\n\nCombine 2 1/4 c flour, 1 tsp baking soda and 1/2 tsp salt. Beat 1 c softened butter, 3/4 c packed brown sugar and 1/4 cup granulated sugar in large bowl with mixer until blended. Add 1 package (3.4 oz) dry vanilla pudding mix, 2 eggs and 1 tsp vanilla; mix well. Gradually beat in flour mixture until blended.\n\nMix 1/4 c granulated sugar and 2 tsp ground cinnamon in small bowl. Shape tablespoonfuls of dough into 40 balls; roll, in batches, in cinnamon sugar until evenly coated. Place, 2 inches apart, on baking sheets sprayed with cooking spray.\n\nBake 8 to 10 min. or until lightly browned. Cool on baking sheets 3 min. Remove to wire racks; cool completely." forKey:@"instructions"];
+    
     /*
     //Create Measurement Objects
     NSEntityDescription *measurementEntity = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:self.managedObjectContext];
@@ -204,7 +264,7 @@
     [powderedSugar setValue:@"dry" forKey:@"category"];
     NSManagedObject *sprinkles = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [sprinkles setValue:@"sprinkles" forKey:@"name"];
-    [sprinkles setValue:@"other" forKey:@"category"];
+    [sprinkles setValue:@"toppings" forKey:@"category"];
     NSManagedObject *apples = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [apples setValue:@"apples" forKey:@"name"];
     [apples setValue:@"fruit" forKey:@"category"];
@@ -246,13 +306,76 @@
     [tapioca setValue:@"other" forKey:@"category"];
     NSManagedObject *lemonCakeMix = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [lemonCakeMix setValue:@"lemon cake mix" forKey:@"name"];
-    [lemonCakeMix setValue:@"dry" forKey:@"category"];
+    [lemonCakeMix setValue:@"mixes" forKey:@"category"];
     NSManagedObject *lemonExtract = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [lemonExtract setValue:@"lemon extract" forKey:@"name"];
     [lemonExtract setValue:@"wet" forKey:@"category"];
     NSManagedObject *peanutButter = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
     [peanutButter setValue:@"peanut butter" forKey:@"name"];
     [peanutButter setValue:@"other" forKey:@"category"];
+    NSManagedObject *vanillaWafers = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vanillaWafers setValue:@"vanilla wafers" forKey:@"name"];
+    [vanillaWafers setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *vanillaPudding = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [vanillaPudding setValue:@"vanilla pudding mix" forKey:@"name"];
+    [vanillaPudding setValue:@"mixes" forKey:@"category"];
+    NSManagedObject *peanuts = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [peanuts setValue:@"peanuts" forKey:@"name"];
+    [peanuts setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *bananas = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [bananas setValue:@"bananas" forKey:@"name"];
+    [bananas setValue:@"fruit" forKey:@"category"];
+    NSManagedObject *grahamCracker = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [grahamCracker setValue:@"graham cracker crumbs" forKey:@"name"];
+    [grahamCracker setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *walnuts = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [walnuts setValue:@"walnuts" forKey:@"name"];
+    [walnuts setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *coconut = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [coconut setValue:@"coconut" forKey:@"name"];
+    [coconut setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *whiteCakeMix = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [whiteCakeMix setValue:@"white cake mix" forKey:@"name"];
+    [whiteCakeMix setValue:@"mixes" forKey:@"category"];
+    NSManagedObject *strawberryGelatin = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [strawberryGelatin setValue:@"strawberry gelatin" forKey:@"name"];
+    [strawberryGelatin setValue:@"mixes" forKey:@"category"];
+    NSManagedObject *sourCream = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [sourCream setValue:@"sour cream" forKey:@"name"];
+    [sourCream setValue:@"dairy" forKey:@"category"];
+    NSManagedObject *pretzels = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [pretzels setValue:@"pretzels" forKey:@"name"];
+    [pretzels setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *lemonZest = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [lemonZest setValue:@"lemon zest" forKey:@"name"];
+    [lemonZest setValue:@"fruit" forKey:@"category"];
+    NSManagedObject *cremeDeMenthe = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [cremeDeMenthe setValue:@"creme de menthe" forKey:@"name"];
+    [cremeDeMenthe setValue:@"alcohol" forKey:@"category"];
+    NSManagedObject *unsweetenedChocolate = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [unsweetenedChocolate setValue:@"unsweetened chocolate" forKey:@"name"];
+    [unsweetenedChocolate setValue:@"chocolate" forKey:@"category"];
+    NSManagedObject *mintExtract = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [mintExtract setValue:@"mint extract" forKey:@"name"];
+    [mintExtract setValue:@"wet" forKey:@"category"];
+    NSManagedObject *marshmallowCreme = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [marshmallowCreme setValue:@"marshmallow creme" forKey:@"name"];
+    [marshmallowCreme setValue:@"other" forKey:@"category"];
+    NSManagedObject *oreoPieCrust = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [oreoPieCrust setValue:@"oreo pie crust" forKey:@"name"];
+    [oreoPieCrust setValue:@"other" forKey:@"category"];
+    NSManagedObject *miniMarshmallows = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [miniMarshmallows setValue:@"mini marshmallows" forKey:@"name"];
+    [miniMarshmallows setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *grahamCrackerPieCrust = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [grahamCrackerPieCrust setValue:@"graham cracker pie crust" forKey:@"name"];
+    [grahamCrackerPieCrust setValue:@"other" forKey:@"category"];
+    NSManagedObject *oreo = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [oreo setValue:@"oreo cookie" forKey:@"name"];
+    [oreo setValue:@"toppings" forKey:@"category"];
+    NSManagedObject *chocolatePudding = [[NSManagedObject alloc] initWithEntity:ingredientEntity insertIntoManagedObjectContext:self.managedObjectContext];
+    [chocolatePudding setValue:@"chocolate pudding mix" forKey:@"name"];
+    [chocolatePudding setValue:@"mixes" forKey:@"category"];
     
     
     //Create ingredient Relationships
@@ -281,6 +404,26 @@
     [lemonCookies setValue:[NSSet setWithObjects:lemonCakeMix, eggs, vegetableOil, lemonExtract, powderedSugar, nil] forKey:@"needs"];
     
     [peanutButterCookies setValue:[NSSet setWithObjects:peanutButter, sugar, eggs, bakingSoda, salt, vanilla, nil] forKey:@"needs"];
+    
+    [peanutButterBananaCreamPie setValue:[NSSet setWithObjects:vanillaWafers, butter, semisweetChocolate, peanutButter, bananas, vanillaPudding, milk, whippedTopping, peanuts, nil] forKey:@"needs"];
+    
+    [layeredCoconutChocolateBars setValue:[NSSet setWithObjects:semisweetChocolate, butter, grahamCracker, walnuts, coconut, creamCheese, milk, vanillaPudding, nil] forKey:@"needs"];
+    
+    [strawberrySwirlCake setValue:[NSSet setWithObjects:whiteCakeMix, strawberryGelatin, sourCream, powderedSugar, whippedTopping, strawberries, nil] forKey:@"needs"];
+    
+    [strawberryPretzelSquares setValue:[NSSet setWithObjects:pretzels, sugar, butter, creamCheese, milk, whippedTopping, water, strawberryGelatin, strawberries, nil] forKey:@"needs"];
+    
+    [peachShortcake setValue:[NSSet setWithObjects:flour, sugar, bakingPowder, lemonZest, creamCheese, milk, peaches, lemonJuice, whippedTopping, nil] forKey:@"needs"];
+    
+    [cremeDeMentheBrownies setValue:[NSSet setWithObjects:semisweetChocolate, butter, powderedSugar, cremeDeMenthe, unsweetenedChocolate, sugar, eggs, mintExtract, flour, nil] forKey:@"needs"];
+    
+    [grasshopperMallowPie setValue:[NSSet setWithObjects:cremeDeMenthe, marshmallowCreme, whippedTopping, oreoPieCrust, nil] forKey:@"needs"];
+    
+    [bananaMallowPie setValue:[NSSet setWithObjects:vanillaPudding, milk, miniMarshmallows, whippedTopping, bananas, grahamCrackerPieCrust, nil] forKey:@"needs"];
+    
+    [stripedDelight setValue:[NSSet setWithObjects:oreo, butter, creamCheese, sugar, milk, whippedTopping, chocolatePudding, nil] forKey:@"needs"];
+    
+    [vanillaSnickerdoodles setValue:[NSSet setWithObjects:flour, bakingSoda, salt, butter, brownSugar, sugar, vanillaPudding, eggs, vanilla, cinnamon, nil] forKey:@"needs"];
 
     
     /*
@@ -384,6 +527,263 @@
         NSLog(@"Unable to save managed object context.");
         NSLog(@"%@, %@", error, error.localizedDescription);
     }
+    if (![heavyCream.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![semisweetChocolate.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![creamCheese.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![pieCrust.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberryJam.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![powderedSugar.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![sprinkles.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![apples.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![caramelDip.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![blueberries.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![almondExtract.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberries.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberryGlaze.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![whippedTopping.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![pumpkinPuree.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![condensedMilk.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![pumpkinPieSpice.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peaches.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![lemonJuice.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![tapioca.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![lemonCakeMix.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![lemonExtract.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peanutButter.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vanillaWafers.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vanillaPudding.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peanuts.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![bananas.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![grahamCracker.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![walnuts.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![coconut.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![whiteCakeMix.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberryGelatin.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![sourCream.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![pretzels.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![lemonZest.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cremeDeMenthe.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![unsweetenedChocolate.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![mintExtract.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![chocolateIcing.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cheesecakeBrownie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![popTart.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![caramelApplePie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![blueberryPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberryPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![pumpkinPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peachBlueberryPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![lemonCookies.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peanutButterCookies.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peanutButterBananaCreamPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![layeredCoconutChocolateBars.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberrySwirlCake.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![strawberryPretzelSquares.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![peachShortcake.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![cremeDeMentheBrownies.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![marshmallowCreme.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![oreoPieCrust.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![grasshopperMallowPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![grahamCrackerPieCrust.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![miniMarshmallows.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![bananaMallowPie.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![oreo.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![chocolatePudding.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![stripedDelight.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    if (![vanillaSnickerdoodles.managedObjectContext save:&error]) {
+        NSLog(@"Unable to save managed object context.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+
     /*
     if (![oneTsp.managedObjectContext save:&error]) {
         NSLog(@"Unable to save managed object context.");
